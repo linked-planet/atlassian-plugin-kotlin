@@ -4,14 +4,6 @@ Creates a Jira or Confluence plugin to be implemented with the
 
 ## Usage
 
-### Install Archetype
-
-First, you have to install the archetype on your machine:  
-
-```
-atlas-mvn clean install
-```
-
 ### Required Properties
 | name | description |
 | ---- | ----------- |
