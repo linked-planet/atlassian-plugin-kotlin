@@ -1,1 +1,1 @@
-clean verify
+license:update-file-header clean verify
