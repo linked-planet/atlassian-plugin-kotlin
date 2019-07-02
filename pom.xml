@@ -36,9 +36,15 @@
         </developer>
     </developers>
 
+    <scm>
+        <connection>scm:git:git://github.com/link-time/atlassian-plugin-kotlin.git</connection>
+        <developerConnection>scm:git:https://github.com/link-time/atlassian-plugin-kotlin.git</developerConnection>
+        <url>https://github.com/link-time/atlassian-plugin-kotlin</url>
+        <tag>HEAD</tag>
+    </scm>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <developer.connection>scm:git:https://github.com/link-time/atlassian-plugin-kotlin.git</developer.connection>
     </properties>
 
     <build>
@@ -68,12 +74,5 @@
             </plugins>
         </pluginManagement>
     </build>
-
-
-    <scm>
-        <!-- change of SCM should be possible without change of pom.xml -->
-        <developerConnection>${developer.connection}</developerConnection>
-        <tag>HEAD</tag>
-    </scm>
 
 </project>
