@@ -50,10 +50,6 @@
         <maven.version>3.3.9</maven.version>
     </properties>
 
-    <prerequisites>
-        <maven>${maven.version}</maven>
-    </prerequisites>
-
     <build>
         <extensions>
             <extension>
