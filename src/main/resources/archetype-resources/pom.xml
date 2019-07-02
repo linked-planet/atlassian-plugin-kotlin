@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>${groupId}</groupId>
+    <artifactId>${artifactId}</artifactId>
+    <version>${version}</version>
+
+    <organization>
+        <name>${organizationNameHumanReadable}</name>
+        <url>${organizationUrl}</url>
+    </organization>
+
+    <name>${nameHumanReadable}</name>
+    <description>${description}</description>
+    <packaging>atlassian-plugin</packaging>
+
+    <inceptionYear>${inceptionYear}</inceptionYear>
+
+
+    <properties>
+        <!-- This key is used to keep the consistency between the key in atlassian-plugin.xml and the key to generate bundle. -->
+        <atlassian.plugin.key>${project.groupId}.${project.artifactId}</atlassian.plugin.key>
+        <atlassian.spring.scanner.version>2.1.5</atlassian.spring.scanner.version>
+
+        #if( $atlassianApp == "jira" )
+        <jira.version>7.13.1</jira.version>
+        #end
+
+        #if( $atlassianApp == "confluence" )
+        <confluence.version>6.9.0</confluence.version>
+        <confluence.data.version>6.9.0</confluence.data.version>
+        #end
+
+        <amps.version>8.0.0</amps.version>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <kotlin.version>1.3.31</kotlin.version>
+        <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
+
+        <developer.connection>${developerConnection}</developer.connection>
+    </properties>
+
+
+    <dependencies>
+        #if( $atlassianApp == "jira" )
+        <dependency>
+            <groupId>com.atlassian.jira</groupId>
+            <artifactId>jira-api</artifactId>
+            <version>${jira.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        #end
+
+        #if( $atlassianApp == "confluence" )
+        <dependency>
+            <groupId>com.atlassian.confluence</groupId>
+            <artifactId>confluence</artifactId>
+            <version>${confluence.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        #end
+
+        <dependency>
+            <groupId>com.atlassian.plugin</groupId>
+            <artifactId>atlassian-spring-scanner-annotation</artifactId>
+            <version>${atlassian.spring.scanner.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>1</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- KOTLIN -->
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib-jdk8</artifactId>
+            <version>${kotlin.version}</version>
+        </dependency>
+
+        <!-- TEST DEPENDENCIES -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+
+    <build>
+        <testSourceDirectory>src/test/kotlin</testSourceDirectory>
+
+        <plugins>
+            <!-- BUILD HELPER -->
+            <!-- make plugins aware of the src/main/kotlin source folder -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>src/main/kotlin</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- KOTLIN -->
+            <plugin>
+                <artifactId>kotlin-maven-plugin</artifactId>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <version>${kotlin.version}</version>
+                <executions>
+                    <execution>
+                        <id>compile</id>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>test-compile</id>
+                        <goals>
+                            <goal>test-compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <executions>
+                    <!-- Replacing default-compile as it is treated specially by maven -->
+                    <execution>
+                        <id>default-compile</id>
+                        <phase>none</phase>
+                    </execution>
+                    <!-- Replacing default-testCompile as it is treated specially by maven -->
+                    <execution>
+                        <id>default-testCompile</id>
+                        <phase>none</phase>
+                    </execution>
+                    <execution>
+                        <id>java-compile</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>java-test-compile</id>
+                        <phase>test-compile</phase>
+                        <goals>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            #if( $atlassianApp == "jira" )<!-- JIRA -->
+            <plugin>
+                <groupId>com.atlassian.maven.plugins</groupId>
+                <artifactId>jira-maven-plugin</artifactId>
+                <version>${amps.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <productVersion>${jira.version}</productVersion>
+                    <productDataVersion>${jira.version}</productDataVersion>
+                    <contextPath>/</contextPath>
+                    <enableQuickReload>true</enableQuickReload>
+                    <jvmArgs>-Xms2g -Xmx2g -XX:+UseG1GC</jvmArgs>
+                    <!-- https://developer.atlassian.com/docs/advanced-topics/configuration-of-instructions-in-atlassian-plugins -->
+                    <instructions>
+                        <Atlassian-Plugin-Key>${atlassian.plugin.key}</Atlassian-Plugin-Key>
+                        <Export-Package>
+                            ${package}.api,
+                        </Export-Package>
+                        <Import-Package>
+                            *
+                        </Import-Package>
+                        <Spring-Context>*</Spring-Context>
+                    </instructions>
+                    <applications>
+                        <!-- Atlassian applications (jira-core, jira-software, jira-servicedesk) -->
+                        <application>
+                            <applicationKey>jira-core</applicationKey>
+                            <version>${jira.version}</version>
+                        </application>
+                    </applications>
+                    <pluginArtifacts>
+                        <!-- If you need any plugins started, list them here -->
+                    </pluginArtifacts>
+                    <systemPropertyVariables>
+                        <atlassian.mail.senddisabled>false</atlassian.mail.senddisabled>
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
+            #end
+
+            #if( $atlassianApp == "confluence" )<!-- CONFLUENCE -->
+            <plugin>
+                <groupId>com.atlassian.maven.plugins</groupId>
+                <artifactId>confluence-maven-plugin</artifactId>
+                <version>${amps.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <productVersion>${confluence.version}</productVersion>
+                    <productDataVersion>${confluence.data.version}</productDataVersion>
+                    <contextPath>/</contextPath>
+                    <enableQuickReload>true</enableQuickReload>
+                    <jvmArgs>-Xms2g -Xmx2g -XX:+UseG1GC</jvmArgs>
+                    <ajpPort>8010</ajpPort>
+                    <!-- https://developer.atlassian.com/docs/advanced-topics/configuration-of-instructions-in-atlassian-plugins -->
+                    <instructions>
+                        <Atlassian-Plugin-Key>${atlassian.plugin.key}</Atlassian-Plugin-Key>
+                        <Export-Package>
+                            ${package}.api,
+                        </Export-Package>
+                        <Import-Package>
+                            *
+                        </Import-Package>
+                        <Spring-Context>*</Spring-Context>
+                    </instructions>
+                </configuration>
+            </plugin>
+            #end
+
+            <!-- SPRING SCANNER -->
+            <plugin>
+                <groupId>com.atlassian.plugin</groupId>
+                <artifactId>atlassian-spring-scanner-maven-plugin</artifactId>
+                <version>${atlassian.spring.scanner.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>atlassian-spring-scanner</goal>
+                        </goals>
+                        <phase>process-classes</phase>
+                    </execution>
+                </executions>
+                <configuration>
+                    <verbose>false</verbose>
+                </configuration>
+            </plugin>
+
+            <!-- LICENSE -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>1.16</version>
+                <configuration>
+                    <licenseName>apache_v2</licenseName>
+                    <licenseFile>${project.basedir}/LICENSE</licenseFile>
+                    <projectName>${project.artifactId}</projectName>
+                    <copyrightOwners>The Plugin Authors</copyrightOwners>
+                    <failOnMissingHeader>true</failOnMissingHeader>
+                    <canUpdateCopyright>true</canUpdateCopyright>
+                    <excludes>
+                        <exclude>**/plugin.properties</exclude>
+                    </excludes>
+                    <excludedScopes>provided,test</excludedScopes>
+                </configuration>
+                <!-- see https://github.com/mojohaus/license-maven-plugin/issues/73#issuecomment-346130508 -->
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.doxia</groupId>
+                        <artifactId>doxia-core</artifactId>
+                        <version>1.6</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.maven.doxia</groupId>
+                        <artifactId>doxia-site-renderer</artifactId>
+                        <version>1.6</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check-file-header</goal>
+                        </goals>
+                        <phase>compile</phase>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Disable integration tests by default, to be enabled via profile -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.21.0</version>
+                <configuration>
+                    <includes>
+                        <include>none</include>
+                    </includes>
+                </configuration>
+            </plugin>
+
+            <!-- RELEASE -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.1</version>
+            </plugin>
+            <plugin>
+                <artifactId>maven-scm-plugin</artifactId>
+                <version>1.8.1</version>
+                <configuration>
+                    <tag>v${project.version}</tag>
+                </configuration>
+            </plugin>
+
+            <!-- UPM -->
+            <plugin>
+                <groupId>com.link-time.maven.plugin.atlassian</groupId>
+                <artifactId>upm-maven-plugin</artifactId>
+                <version>1.0.2</version>
+                <configuration>
+                    <baseUrl>${deploy.url}</baseUrl>
+                    <username>${deploy.username}</username>
+                    <password>${deploy.password}</password>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
+    <profiles>
+        <!-- plugins we only want to execute on the CI server because they either take too
+        long or cause problems locally -->
+        <profile>
+            <id>ci</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <repositories>
+                <repository>
+                    <id>spring-plugins</id>
+                    <name>Spring Plugins repository</name>
+                    <url>http://repo.spring.io/plugins-release</url>
+                </repository>
+            </repositories>
+            <build>
+                <plugins>
+                    <!-- KDOC -->
+                    <plugin>
+                        <groupId>org.jetbrains.dokka</groupId>
+                        <artifactId>dokka-maven-plugin</artifactId>
+                        <version>0.9.18</version>
+                        <executions>
+                            <execution>
+                                <phase>prepare-package</phase>
+                                <goals>
+                                    <goal>javadocJar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <!-- Prevents the plugin from connecting to the internet (cannot build offline otherwise) -->
+                            <cacheRoot>dokka-cache</cacheRoot>
+                        </configuration>
+                    </plugin>
+
+                    <!-- SOURCES -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>3.0.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+
+    <scm>
+        <!-- change of SCM should be possible without change of pom.xml -->
+        <developerConnection>${developer.connection}</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+
+</project>

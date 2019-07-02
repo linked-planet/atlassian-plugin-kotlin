@@ -1,0 +1,45 @@
+<archetype-descriptor
+        xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd">
+
+    <fileSets>
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+            <directory>src/main/kotlin</directory>
+        </fileSet>
+        <fileSet filtered="true" encoding="UTF-8">
+            <directory>src/test/kotlin</directory>
+        </fileSet>
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+            <directory>src/main/java</directory>
+        </fileSet>
+        <fileSet filtered="true" encoding="UTF-8">
+            <directory>src/main/resources</directory>
+        </fileSet>
+        <fileSet filtered="true" encoding="UTF-8">
+            <!--suppress CheckTagEmptyBody - it's the only way to get the files in the root directory -->
+            <directory></directory>
+            <includes>
+                <include>.gitignore</include>
+                <include>LICENSE</include>
+                <include>README.md</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+
+    <requiredProperties>
+        <requiredProperty key="nameHumanReadable"/>
+        <requiredProperty key="description"/>
+        <requiredProperty key="atlassianApp"/>
+        <requiredProperty key="developerConnection"/>
+        <requiredProperty key="groupId"/>
+        <requiredProperty key="artifactId"/>
+        <requiredProperty key="package"/>
+        <requiredProperty key="organizationNameHumanReadable"/>
+        <requiredProperty key="organizationUrl"/>
+        <requiredProperty key="version">
+            <defaultValue>0.1.0-SNAPSHOT</defaultValue>
+        </requiredProperty>
+    </requiredProperties>
+
+</archetype-descriptor>
