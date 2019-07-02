@@ -9,7 +9,7 @@ Creates a Jira or Confluence plugin to be implemented with the
 First, you have to install the archetype on your machine:  
 
 ```
-mvn install
+atlas-mvn clean install
 ```
 
 ### Required Properties
@@ -28,7 +28,7 @@ mvn install
 
 ### Example
 ```
-mvn archetype:generate -B \
+atlas-mvn archetype:generate -B \
     -DarchetypeGroupId=com.linktime.maven.archetype \
     -DarchetypeArtifactId=atlassian-plugin-kotlin \
     -DarchetypeVersion=<VERSION-OF-ARCHETYPE> \
