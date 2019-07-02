@@ -26,6 +26,16 @@
         </license>
     </licenses>
 
+    <developers>
+        <developer>
+            <name>Alexander Weickmann</name>
+            <email>alexander.weickmann@gmail.com</email>
+            <url>https://github.com/weickmanna</url>
+            <organization>link-time GmbH</organization>
+            <organizationUrl>https://link-time.com</organizationUrl>
+        </developer>
+    </developers>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <developer.connection>scm:git:https://github.com/link-time/atlassian-plugin-kotlin.git</developer.connection>
