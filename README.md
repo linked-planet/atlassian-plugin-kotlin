@@ -15,7 +15,7 @@ mvn install
 ### Required Properties
 | name | description |
 | ---- | ----------- |
-| atlassianApp | *confluence*, *jira* |
+| atlassianApp | `confluence`, `jira` |
 | groupId | Maven Group ID |
 | artifactId | Maven Artifact ID |
 | package | Name of the Java package the plugin source code will reside in |
