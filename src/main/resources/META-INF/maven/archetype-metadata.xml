@@ -37,6 +37,7 @@
         <requiredProperty key="package"/>
         <requiredProperty key="organizationNameHumanReadable"/>
         <requiredProperty key="organizationUrl"/>
+        <requiredProperty key="inceptionYear"/>
         <requiredProperty key="version">
             <defaultValue>0.1.0-SNAPSHOT</defaultValue>
         </requiredProperty>
