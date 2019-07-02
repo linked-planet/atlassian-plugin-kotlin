@@ -36,10 +36,10 @@ atlas-mvn archetype:generate -B \
     -DgroupId=com.linktime.plugin.jira \
     -DartifactId=new-plugin \
     -Dpackage=com.linktime.plugin.jira.newplugin \
-    -DnameHumanReadable="New Plugin" \
-    -Ddescription="Description of New Plugin" \
-    -DorganizationNameHumanReadable="link-time GmbH" \
-    -DorganizationUrl="https://link-time.com" \
-    -DinceptionYear="2019" \
+    "-DnameHumanReadable='New Plugin'" \
+    "-Ddescription='Description of New Plugin'" \
+    "-DorganizationNameHumanReadable='link-time GmbH'" \
+    -DorganizationUrl=https://link-time.com \
+    -DinceptionYear=2019 \
     -DdeveloperConnection=scm:git:https://github.com/link-time/new-plugin.git
 ```
