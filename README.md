@@ -20,7 +20,7 @@ Creates a Jira or Confluence plugin to be implemented with the
 
 ### Example
 ```
-atlas-mvn archetype:generate -B \
+mvn archetype:generate -B \
     -DarchetypeGroupId=com.linktime.maven.archetype \
     -DarchetypeArtifactId=atlassian-plugin-kotlin \
     -DarchetypeVersion=<VERSION-OF-ARCHETYPE> \
