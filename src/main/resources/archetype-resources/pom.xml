@@ -413,7 +413,7 @@
                         </executions>
                         <configuration>
                             <!-- Prevents the plugin from connecting to the internet (cannot build offline otherwise) -->
-                            <cacheRoot>dokka-cache</cacheRoot>
+                            <cacheRoot>default</cacheRoot>
                         </configuration>
                     </plugin>
 
