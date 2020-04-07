@@ -327,14 +327,15 @@
                 </executions>
             </plugin>
 
-            <!-- Disable integration tests by default, to be enabled via profile -->
+            <!-- INTEGRATION TEST -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>2.21.0</version>
                 <configuration>
+                    <skipITs>true</skipITs>
                     <includes>
-                        <include>none</include>
+                        <include>it/**/*IntegrationTest.java</include>
                     </includes>
                 </configuration>
             </plugin>
