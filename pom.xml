@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.linktime.maven.archetype</groupId>
+    <groupId>com.linkedplanet.maven.archetype</groupId>
     <artifactId>atlassian-plugin-kotlin</artifactId>
     <version>2.0.1-SNAPSHOT</version>
     <packaging>maven-archetype</packaging>
@@ -15,8 +15,8 @@
     <inceptionYear>2018</inceptionYear>
 
     <organization>
-        <name>link-time GmbH</name>
-        <url>https://link-time.com/</url>
+        <name>linked-planet GmbH</name>
+        <url>https://linked-planet.com/</url>
     </organization>
 
     <licenses>
@@ -31,15 +31,15 @@
             <name>Alexander Weickmann</name>
             <email>alexander.weickmann@gmail.com</email>
             <url>https://github.com/weickmanna</url>
-            <organization>link-time GmbH</organization>
-            <organizationUrl>https://link-time.com</organizationUrl>
+            <organization>linked-planet GmbH</organization>
+            <organizationUrl>https://linked-planet.com</organizationUrl>
         </developer>
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/link-time/atlassian-plugin-kotlin.git</connection>
-        <developerConnection>scm:git:https://github.com/link-time/atlassian-plugin-kotlin.git</developerConnection>
-        <url>https://github.com/link-time/atlassian-plugin-kotlin</url>
+        <connection>scm:git:git://github.com/linked-planet/atlassian-plugin-kotlin.git</connection>
+        <developerConnection>scm:git:https://github.com/linked-planet/atlassian-plugin-kotlin.git</developerConnection>
+        <url>https://github.com/linked-planet/atlassian-plugin-kotlin</url>
         <tag>HEAD</tag>
     </scm>
 

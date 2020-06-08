@@ -1,4 +1,6 @@
-name: Java CI
+# https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+
+name: Maven
 
 on: [push]
 
@@ -7,9 +9,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-      - uses: actions/cache@v1
+      - name: Download Maven Cache
+        uses: actions/cache@v2
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}

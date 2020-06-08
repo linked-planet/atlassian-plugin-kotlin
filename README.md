@@ -25,26 +25,26 @@ Creates a Jira or Confluence plugin to be implemented with the
 ### Example
 ```
 mvn archetype:generate -B \
-    -DarchetypeGroupId=com.linktime.maven.archetype \
+    -DarchetypeGroupId=com.linkedplanet.maven.archetype \
     -DarchetypeArtifactId=atlassian-plugin-kotlin \
     -DarchetypeVersion=<VERSION-OF-ARCHETYPE> \
     -DatlassianApp=jira \
-    -DgroupId=com.linktime.plugin.jira \
+    -DgroupId=com.linked-planet.plugin.jira \
     -DartifactId=new-plugin \
-    -Dpackage=com.linktime.plugin.jira.newplugin \
+    -Dpackage=com.linkedplanet.plugin.jira.newplugin \
     "-DnameHumanReadable='New Plugin'" \
     "-Ddescription='Description of New Plugin'" \
-    "-DorganizationNameHumanReadable='link-time GmbH'" \
-    -DorganizationUrl=https://link-time.com \
-    -DinceptionYear=2019 \
-    -DdeveloperConnection=scm:git:https://github.com/link-time/new-plugin.git
+    "-DorganizationNameHumanReadable='linked-planet GmbH'" \
+    -DorganizationUrl=https://linked-planet.com \
+    -DinceptionYear=2020 \
+    -DdeveloperConnection=scm:git:https://github.com/linked-planet/new-plugin.git
 ```
 
 
 ## License
 
 ### Template license
-Written 2019-2020 by [link-time GmbH](https://www.link-time.com).
+Written 2019-2020 by [linked-planet GmbH](https://www.linked-planet.com).
 
 To the extent possible under law, the author(s) have dedicated all copyright and related
 and neighboring rights to this template to the public domain worldwide.
