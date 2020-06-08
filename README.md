@@ -1,5 +1,5 @@
 # Maven Archetype: Kotlin Atlassian Plugin
-![Java CI](https://github.com/link-time/atlassian-plugin-kotlin/workflows/Java%20CI/badge.svg)
+![Maven](https://github.com/linked-planet/atlassian-plugin-kotlin/workflows/Maven/badge.svg)
 [![GitHub License](https://img.shields.io/badge/license-CC0%201.0%20Universal-blue.svg?style=flat)](https://creativecommons.org/publicdomain/zero/1.0/legalcode)
 
 Creates a Jira or Confluence plugin to be implemented with the
