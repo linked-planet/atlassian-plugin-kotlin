@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+
+  #if( $atlassianApp == "jira" )
+  jira:
+    image: atlassian/jira-software:latest
+    ports:
+      - "2990:8080"
+  #end
+
+  #if( $atlassianApp == "confluence" )
+  confluence:
+    image: atlassian/confluence-server:latest
+    ports:
+      - "1990:8090"
+  #end

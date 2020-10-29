@@ -17,6 +17,9 @@
             <directory>src/main/resources</directory>
         </fileSet>
         <fileSet filtered="true" encoding="UTF-8">
+            <directory>docker-env</directory>
+        </fileSet>
+        <fileSet filtered="true" encoding="UTF-8">
             <directory>runConfigurations</directory>
         </fileSet>
         <fileSet filtered="true" encoding="UTF-8">
@@ -27,6 +30,7 @@
                 <include>LICENSE</include>
                 <include>README.md</include>
                 <include>setup-idea.sh</include>
+                <include>run-docker-env.sh</include>
             </includes>
         </fileSet>
     </fileSets>
