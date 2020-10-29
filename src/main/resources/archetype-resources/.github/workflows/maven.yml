@@ -40,13 +40,15 @@ jobs:
           ]'
 
       - name: Debug Maven Settings
-        run: mvn help:effective-settings
+        run: mvn -B help:effective-settings
         env:
           ARTIFACTORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME }}
           ARTIFACTORY_PASSWORD: ${{ secrets.ARTIFACTORY_PASSWORD }}
 
       - name: Build & Publish to Artifactory
         run: mvn -B deploy -Pci
+          -DaltReleaseDeploymentRepository=artifactory.release::${{ secrets.ARTIFACTORY_CONTEXT_URL }}/libs-release-local
+          -DaltSnapshotDeploymentRepository=artifactory.snapshot::${{ secrets.ARTIFACTORY_CONTEXT_URL }}/libs-snapshot-local
         env:
           ARTIFACTORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME }}
           ARTIFACTORY_PASSWORD: ${{ secrets.ARTIFACTORY_PASSWORD }}
