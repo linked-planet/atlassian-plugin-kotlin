@@ -141,8 +141,8 @@
                 </executions>
             </plugin>
 
-            <!-- Clean Maven directories that get corrupted when rebuilding the project with IntelliJ
-             or on successive Maven builds -->
+            <!-- Clean Maven dependency-plugin-markers directory
+                 as it gets corrupted when rebuilding the project with IntelliJ -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
@@ -157,7 +157,6 @@
                             <target>
                                 <delete failonerror="false">
                                     <fileset dir="${project.build.directory}/dependency-maven-plugin-markers"/>
-                                    <fileset dir="${project.build.directory}/classes"/>
                                 </delete>
                             </target>
                         </configuration>
@@ -399,7 +398,7 @@
 
     <profiles>
         <!-- plugins we only want to execute on the CI server because they either take too
-        long or cause problems locally -->
+             long or cause problems locally -->
         <profile>
             <id>ci</id>
             <activation>
