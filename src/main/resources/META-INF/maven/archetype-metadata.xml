@@ -23,6 +23,9 @@
             <directory>runConfigurations</directory>
         </fileSet>
         <fileSet filtered="true" encoding="UTF-8">
+            <directory>pipelines</directory>
+        </fileSet>
+        <fileSet filtered="true" encoding="UTF-8">
             <!--suppress CheckTagEmptyBody - it's the only way to get the files in the root directory -->
             <directory></directory>
             <includes>
@@ -31,6 +34,7 @@
                 <include>README.md</include>
                 <include>setup-idea.sh</include>
                 <include>run-docker-env.sh</include>
+                <include>bitbucket-pipelines.yml</include>
             </includes>
         </fileSet>
     </fileSets>
@@ -48,6 +52,9 @@
         <requiredProperty key="inceptionYear"/>
         <requiredProperty key="version">
             <defaultValue>0.1.0-SNAPSHOT</defaultValue>
+        </requiredProperty>
+        <requiredProperty key="generateBitbucketPipelines">
+            <defaultValue>true</defaultValue>
         </requiredProperty>
     </requiredProperties>
 

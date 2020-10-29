@@ -21,23 +21,25 @@ Creates a Jira or Confluence plugin to be implemented with the
 | organizationUrl | URL of the author organization |
 | inceptionYear | Year of inception |
 | developerConnection | String to be written into Maven's SCM `developerConnection` tag |
+| generateBitbucketPipelines | Whether to generate bitbucket-pipelines.yml and corresponding scripts |
 
 ### Example
 ```
 mvn archetype:generate -B \
-    -DarchetypeGroupId=com.linkedplanet.maven.archetype \
-    -DarchetypeArtifactId=atlassian-plugin-kotlin \
-    -DarchetypeVersion=<VERSION-OF-ARCHETYPE> \
-    -DatlassianApp=jira \
-    -DgroupId=com.linked-planet.plugin.jira \
-    -DartifactId=new-plugin \
-    -Dpackage=com.linkedplanet.plugin.jira.newplugin \
+    "-DarchetypeGroupId=com.linkedplanet.maven.archetype" \
+    "-DarchetypeArtifactId=atlassian-plugin-kotlin" \
+    "-DarchetypeVersion=<VERSION-OF-ARCHETYPE>" \
+    "-DatlassianApp=jira" \
+    "-DgroupId=com.linked-planet.plugin.jira" \
+    "-DartifactId=new-plugin" \
+    "-Dpackage=com.linkedplanet.plugin.jira.newplugin" \
     "-DnameHumanReadable='New Plugin'" \
     "-Ddescription='Description of New Plugin'" \
     "-DorganizationNameHumanReadable='linked-planet GmbH'" \
-    -DorganizationUrl=https://linked-planet.com \
-    -DinceptionYear=2020 \
-    -DdeveloperConnection=scm:git:https://github.com/linked-planet/new-plugin.git
+    "-DorganizationUrl=https://linked-planet.com" \
+    "-DinceptionYear=2020" \
+    "-DdeveloperConnection=scm:git:https://github.com/linked-planet/new-plugin.git" \
+    "-DgenerateBitbucketPipelines=true"
 ```
 
 

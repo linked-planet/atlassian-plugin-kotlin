@@ -1,0 +1,68 @@
+image: maven:3.6-jdk-8-slim
+
+# deployment to production is only possible via release pipeline
+
+pipelines:
+
+  default:
+    - step:
+        name: Build
+        caches:
+          - maven
+        script:
+          - sh pipelines/configure-maven-artifactory.sh
+          - mvn -B clean deploy
+            -DaltReleaseDeploymentRepository=artifactory.release::$ARTIFACTORY_CONTEXT_URL/libs-release-local
+            -DaltSnapshotDeploymentRepository=artifactory.snapshot::$ARTIFACTORY_CONTEXT_URL/libs-snapshot-local
+            -Ddeveloper.connection=scm:git:$BITBUCKET_GIT_HTTP_ORIGIN
+            -Pci
+        artifacts:
+          - target/*-*.*.*-SNAPSHOT.jar
+    # default pipeline will deploy from Bitbucket pipelines artifacts, because we are not able to get the
+    # exact Snapshot jar with the correct timestamp from Artifactory
+    # -> Bitbucket pipelines artifacts are only stored for 14 days however
+    - step:
+        name: Deploy DEV
+        deployment: dev
+        trigger: manual
+        script:
+          - SNAPSHOT_FILE=$(find target -maxdepth 1 -name "*-*.*.*-SNAPSHOT.jar")
+          - sh pipelines/deploy.sh "" $SNAPSHOT_FILE
+    - step:
+        name: Deploy UAT
+        deployment: uat
+        trigger: manual
+        script:
+          - SNAPSHOT_FILE=$(find target -maxdepth 1 -name "*-*.*.*-SNAPSHOT.jar")
+          - sh pipelines/deploy.sh "" $SNAPSHOT_FILE
+
+  custom:
+    release:
+      - variables:
+          - name: VERSION
+      - step:
+          name: Build and Release
+          caches:
+            - maven
+          script:
+            - apt update && apt install -y git
+            - sh pipelines/configure-maven-artifactory.sh
+            - sh pipelines/release.sh $VERSION
+      # release pipeline will upload the artifact to artifactory and download it from there for deployment
+      # -> the artifact is available indefinitely, so deployments can be re-triggered in the future
+      - step:
+          name: Deploy DEV
+          deployment: dev
+          script:
+            - sh pipelines/deploy.sh $VERSION
+      - step:
+          name: Deploy UAT
+          deployment: uat
+          script:
+            - sh pipelines/deploy.sh $VERSION
+      - step:
+          name: Deploy PROD
+          deployment: prod
+          trigger: manual
+          script:
+            - sh pipelines/deploy.sh $VERSION
