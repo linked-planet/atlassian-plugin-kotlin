@@ -29,7 +29,16 @@ set_commit_version() {
     git commit -m "$COMMIT_MSG"
 }
 
+echo_demarcation() {
+  TEXT=$1
+  echo
+  echo "--------------------------------------------------------------------------"
+  echo "RELEASE: $TEXT"
+  echo "--------------------------------------------------------------------------"
+}
+
 # set non-snapshot version number as specified in parameter
+echo_demarcation "Set & commit version $VERSION"
 CURRENT_VERSION=$(get_version_from_maven)
 set_commit_version "$CURRENT_VERSION" "$VERSION" "release v$VERSION"
 git tag "v${VERSION}" && git push && git push --tags
@@ -40,5 +49,6 @@ MINOR_VERSION=$(echo "$VERSION" | cut -d . -f2)
 INCREMENT_VERSION=$(echo "$VERSION" | cut -d . -f3)
 NEXT_INCREMENT_VERSION=$((INCREMENT_VERSION + 1))
 NEXT_SNAPSHOT_VERSION="$MAJOR_VERSION.$MINOR_VERSION.$NEXT_INCREMENT_VERSION-SNAPSHOT"
+echo_demarcation "Prepare next snapshot version $NEXT_SNAPSHOT_VERSION"
 set_commit_version "$VERSION" "$NEXT_SNAPSHOT_VERSION" "[skip ci] set development version $NEXT_SNAPSHOT_VERSION"
 git push
