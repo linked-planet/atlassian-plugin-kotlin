@@ -30,11 +30,11 @@
             <directory></directory>
             <includes>
                 <include>.gitignore</include>
-                <include>LICENSE</include>
-                <include>README.md</include>
-                <include>setup-idea.sh</include>
-                <include>run-docker-env.sh</include>
                 <include>bitbucket-pipelines.yml</include>
+                <include>LICENSE</include>
+                <include>regenerate.sh</include>
+                <include>run-docker-env.sh</include>
+                <include>setup-idea.sh</include>
             </includes>
         </fileSet>
     </fileSets>
