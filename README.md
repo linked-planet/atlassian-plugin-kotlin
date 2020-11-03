@@ -26,7 +26,7 @@ Creates a Jira or Confluence plugin to be implemented with the
 ### Example
 ```
 mvn archetype:generate -B \
-    "-DarchetypeGroupId=com.linkedplanet.maven.archetype" \
+    "-DarchetypeGroupId=com.linked-planet.maven.archetype" \
     "-DarchetypeArtifactId=atlassian-plugin-kotlin" \
     "-DarchetypeVersion=<VERSION-OF-ARCHETYPE>" \
     "-DatlassianApp=jira" \
