@@ -8,7 +8,7 @@ Creates a Jira or Confluence plugin to be implemented with the
 
 ## Usage
 
-Use [!install-all-tags.sh](install-all-tags.sh) to install all available tags on your local machine.
+Use [install-all-tags.sh](install-all-tags.sh) to install all available tags on your local machine.
 
 ### Required Properties
 | name | description |
