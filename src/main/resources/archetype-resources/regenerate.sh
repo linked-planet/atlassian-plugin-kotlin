@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# Determine the location of the script
+set -e
+
 SCRIPT_DIR="$(
   cd "$(dirname "$0")" || exit
   pwd -P
