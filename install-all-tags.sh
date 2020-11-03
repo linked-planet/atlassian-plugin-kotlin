@@ -9,7 +9,6 @@ install() {
   mvn clean install
 }
 
-
 echo_demarcation() {
   TEXT=$1
   echo
@@ -18,6 +17,6 @@ echo_demarcation() {
   echo "--------------------------------------------------------------------------"
 }
 
-export -f install
-export -f echo_demarcation
-git tag | xargs bash -c 'install "$@"'
+while read -r tag; do
+  install "$tag"
+done < <(git tag)
