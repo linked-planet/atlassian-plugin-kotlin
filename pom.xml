@@ -10,8 +10,7 @@
     <packaging>maven-archetype</packaging>
 
     <name>Atlassian Plugin Archetype - Kotlin</name>
-    <description>Creates a Jira or Confluence plugin to be implemented with the Kotlin programming language.
-    </description>
+    <description>Creates a Jira or Confluence plugin to be implemented with the Kotlin programming language.</description>
     <inceptionYear>2018</inceptionYear>
 
     <organization>
