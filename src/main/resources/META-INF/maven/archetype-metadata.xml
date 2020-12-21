@@ -62,6 +62,9 @@
         <requiredProperty key="generateDockerEnvironment">
             <defaultValue>true</defaultValue>
         </requiredProperty>
+        <requiredProperty key="generateStubs">
+            <defaultValue>true</defaultValue>
+        </requiredProperty>
     </requiredProperties>
 
 </archetype-descriptor>

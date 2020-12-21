@@ -26,6 +26,7 @@ Use [install-all-tags.sh](install-all-tags.sh) to install all available tags on 
 | generateGithubActions | Whether to generate a GitHub workflow |
 | generateBitbucketPipelines | Whether to generate bitbucket-pipelines.yml and corresponding scripts |
 | generateDockerEnvironment | Whether to generate a `docker-compose.yml` with a basic Atlassian-provided app container |
+| generateStubs | Whether to generate stubs (all archetype files in `src`) |
 
 ### Example
 ```
@@ -45,7 +46,8 @@ mvn archetype:generate -B \
     "-DdeveloperConnection=scm:git:https://github.com/linked-planet/new-plugin.git" \
     "-DgenerateGithubActions=true" \
     "-DgenerateBitbucketPipelines=true" \
-    "-DgenerateDockerEnvironment=true"
+    "-DgenerateDockerEnvironment=true" \
+    "-DgenerateStubs=true"
 ```
 
 
