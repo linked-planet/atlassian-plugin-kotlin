@@ -24,17 +24,17 @@
     <properties>
         <!-- This key is used to keep the consistency between the key in atlassian-plugin.xml and the key to generate bundle. -->
         <atlassian.plugin.key>${project.groupId}.${project.artifactId}</atlassian.plugin.key>
-        <atlassian.spring.scanner.version>2.1.5</atlassian.spring.scanner.version>
+        <atlassian.spring.scanner.version>2.2.1</atlassian.spring.scanner.version>
 
 #if( $atlassianApp == "jira" )
-        <jira.version>8.5.3</jira.version>
+        <jira.version>8.13.2</jira.version>
 #end
 
 #if( $atlassianApp == "confluence" )
-        <confluence.version>6.15.4</confluence.version>
+        <confluence.version>7.4.6</confluence.version>
 #end
 
-        <amps.version>8.0.2</amps.version>
+        <amps.version>8.2.0</amps.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -42,7 +42,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
-        <kotlin.version>1.3.71</kotlin.version>
+        <kotlin.version>1.4.21</kotlin.version>
 
         <!-- @formatter:off -->
         <developer.connection>${developerConnection}</developer.connection>
@@ -141,8 +141,8 @@
                 </executions>
             </plugin>
 
-            <!-- Clean Maven dependency-plugin-markers directory
-                 as it gets corrupted when rebuilding the project with IntelliJ -->
+            <!-- Clean Maven directories that get corrupted when rebuilding the project with IntelliJ
+                 or on successive Maven builds -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
@@ -157,6 +157,7 @@
                             <target>
                                 <delete failonerror="false">
                                     <fileset dir="${project.build.directory}/dependency-maven-plugin-markers"/>
+                                    <fileset dir="${project.build.directory}/classes"/>
                                 </delete>
                             </target>
                         </configuration>
@@ -449,37 +450,11 @@
         <repository>
             <id>atlassian-public</id>
             <url>https://maven.atlassian.com/repository/public</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-                <checksumPolicy>warn</checksumPolicy>
-            </releases>
         </repository>
+        <!-- jndi -->
         <repository>
-            <id>central</id>
-            <name>Maven Central</name>
-            <url>http://repo1.maven.org/maven2</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-                <checksumPolicy>warn</checksumPolicy>
-            </releases>
-        </repository>
-        <repository>
-            <id>spring-plugins</id>
-            <name>Spring Plugins repository</name>
-            <url>http://repo.spring.io/plugins-release</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-                <checksumPolicy>warn</checksumPolicy>
-            </releases>
+            <id>geomajas</id>
+            <url>http://maven.geomajas.org</url>
         </repository>
     </repositories>
 
@@ -488,25 +463,6 @@
         <pluginRepository>
             <id>atlassian-public</id>
             <url>https://maven.atlassian.com/repository/public</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-                <checksumPolicy>warn</checksumPolicy>
-            </releases>
-        </pluginRepository>
-        <pluginRepository>
-            <id>central</id>
-            <name>Maven Central</name>
-            <url>http://repo1.maven.org/maven2</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-                <checksumPolicy>warn</checksumPolicy>
-            </releases>
         </pluginRepository>
     </pluginRepositories>
 
