@@ -23,7 +23,9 @@ Use [install-all-tags.sh](install-all-tags.sh) to install all available tags on 
 | organizationUrl | URL of the author organization |
 | inceptionYear | Year of inception |
 | developerConnection | String to be written into Maven's SCM `developerConnection` tag |
+| generateGithubActions | Whether to generate a GitHub workflow |
 | generateBitbucketPipelines | Whether to generate bitbucket-pipelines.yml and corresponding scripts |
+| generateDockerEnvironment | Whether to generate a `docker-compose.yml` with a basic Atlassian-provided app container |
 
 ### Example
 ```
@@ -35,13 +37,15 @@ mvn archetype:generate -B \
     "-DgroupId=com.linked-planet.plugin.jira" \
     "-DartifactId=new-plugin" \
     "-Dpackage=com.linkedplanet.plugin.jira.newplugin" \
-    "-DnameHumanReadable='New Plugin'" \
-    "-Ddescription='Description of New Plugin'" \
-    "-DorganizationNameHumanReadable='linked-planet GmbH'" \
+    "-DnameHumanReadable=New Plugin" \
+    "-Ddescription=Description of New Plugin" \
+    "-DorganizationNameHumanReadable=linked-planet GmbH" \
     "-DorganizationUrl=https://linked-planet.com" \
     "-DinceptionYear=2020" \
     "-DdeveloperConnection=scm:git:https://github.com/linked-planet/new-plugin.git" \
-    "-DgenerateBitbucketPipelines=true"
+    "-DgenerateGithubActions=true" \
+    "-DgenerateBitbucketPipelines=true" \
+    "-DgenerateDockerEnvironment=true"
 ```
 
 

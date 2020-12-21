@@ -53,7 +53,13 @@
         <requiredProperty key="version">
             <defaultValue>0.1.0-SNAPSHOT</defaultValue>
         </requiredProperty>
+        <requiredProperty key="generateGithubActions">
+            <defaultValue>true</defaultValue>
+        </requiredProperty>
         <requiredProperty key="generateBitbucketPipelines">
+            <defaultValue>true</defaultValue>
+        </requiredProperty>
+        <requiredProperty key="generateDockerEnvironment">
             <defaultValue>true</defaultValue>
         </requiredProperty>
     </requiredProperties>
