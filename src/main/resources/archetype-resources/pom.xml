@@ -26,8 +26,11 @@
         <atlassian.plugin.key>${project.groupId}.${project.artifactId}</atlassian.plugin.key>
         <atlassian.spring.scanner.version>2.2.1</atlassian.spring.scanner.version>
 
-#if( $atlassianApp == "jira" )
+#if( $atlassianApp == "jira" || $atlassianApp == "jira-insight" )
         <jira.version>8.13.2</jira.version>
+#end
+#if( $atlassianApp == "jira-insight" )
+        <insight.version>8.6.11</insight.version>
 #end
 
 #if( $atlassianApp == "confluence" )
@@ -56,7 +59,7 @@
 
 
     <dependencies>
-#if( $atlassianApp == "jira" )
+#if( $atlassianApp == "jira" || $atlassianApp == "jira-insight" )
         <dependency>
             <groupId>com.atlassian.jira</groupId>
             <artifactId>jira-api</artifactId>
@@ -68,6 +71,14 @@
                     <artifactId>jta</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+#end
+#if( $atlassianApp == "jira-insight" )
+        <dependency>
+            <groupId>com.riadalabs.jira.plugins</groupId>
+            <artifactId>insight</artifactId>
+            <version>${insight.version}</version>
+            <scope>provided</scope>
         </dependency>
 #end
 
@@ -217,7 +228,7 @@
                 </executions>
             </plugin>
 
-#if( $atlassianApp == "jira" )
+#if( $atlassianApp == "jira" || $atlassianApp == "jira-insight"  )
             <!-- JIRA -->
             <plugin>
                 <groupId>com.atlassian.maven.plugins</groupId>
@@ -250,6 +261,13 @@
                     </applications>
                     <pluginArtifacts>
                         <!-- If you need any plugins started, list them here -->
+#if( $atlassianApp == "jira-insight" )
+                        <pluginArtifact>
+                            <groupId>com.riadalabs.jira.plugins</groupId>
+                            <artifactId>insight</artifactId>
+                            <version>${insight.version}</version>
+                        </pluginArtifact>
+#end
                     </pluginArtifacts>
                     <systemPropertyVariables>
                         <atlassian.mail.senddisabled>false</atlassian.mail.senddisabled>
@@ -453,6 +471,12 @@
             <id>atlassian-public</id>
             <url>https://maven.atlassian.com/repository/public</url>
         </repository>
+#if( $atlassianApp == "jira-insight" )
+        <repository>
+            <id>riada-repository</id>
+            <url>https://repo.riada.io/repository/riada-repo/</url>
+        </repository>
+#end
         <!-- jndi -->
         <repository>
             <id>geomajas</id>

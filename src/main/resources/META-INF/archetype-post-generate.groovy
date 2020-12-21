@@ -21,7 +21,7 @@ Boolean generateDockerEnvironment = Boolean.valueOf(request.properties.get("gene
 Boolean generateGithubActions = Boolean.valueOf(request.properties.get("generateGithubActions"))
 Boolean generateStubs = Boolean.valueOf(request.properties.get("generateStubs"))
 
-if (atlassianApp == "jira") {
+if (atlassianApp.contains("jira")) {
     Files.deleteIfExists projectPath.resolve("runConfigurations/confluence_run.xml")
     Files.deleteIfExists projectPath.resolve("runConfigurations/confluence_debug.xml")
 } else if (atlassianApp == "confluence") {

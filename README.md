@@ -13,7 +13,7 @@ Use [install-all-tags.sh](install-all-tags.sh) to install all available tags on 
 ### Required Properties
 | name | description |
 | ---- | ----------- |
-| atlassianApp | `confluence`, `jira` |
+| atlassianApp | `confluence`, `jira`, `jira-insight` |
 | groupId | Maven Group ID |
 | artifactId | Maven Artifact ID |
 | package | Name of the Java package the plugin source code will reside in |
