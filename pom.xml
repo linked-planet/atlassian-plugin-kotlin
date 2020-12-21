@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.linked-planet.maven.archetype</groupId>
     <artifactId>atlassian-plugin-kotlin</artifactId>
-    <version>3.0.2-SNAPSHOT</version>
+    <version>3.1.0</version>
     <packaging>maven-archetype</packaging>
 
     <name>Atlassian Plugin Archetype - Kotlin</name>
