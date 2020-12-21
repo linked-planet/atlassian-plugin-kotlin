@@ -217,7 +217,8 @@
                 </executions>
             </plugin>
 
-            #if( $atlassianApp == "jira" )<!-- JIRA -->
+#if( $atlassianApp == "jira" )
+            <!-- JIRA -->
             <plugin>
                 <groupId>com.atlassian.maven.plugins</groupId>
                 <artifactId>jira-maven-plugin</artifactId>
@@ -257,9 +258,10 @@
                     <noWebapp>true</noWebapp>
                 </configuration>
             </plugin>
-            #end
+#end
 
-            #if( $atlassianApp == "confluence" )<!-- CONFLUENCE -->
+#if( $atlassianApp == "confluence" )
+            <!-- CONFLUENCE -->
             <plugin>
                 <groupId>com.atlassian.maven.plugins</groupId>
                 <artifactId>confluence-maven-plugin</artifactId>
@@ -286,7 +288,7 @@
                     <noWebapp>true</noWebapp>
                 </configuration>
             </plugin>
-            #end
+#end
 
             <!-- SPRING SCANNER -->
             <plugin>
