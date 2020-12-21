@@ -26,13 +26,13 @@
         <atlassian.plugin.key>${project.groupId}.${project.artifactId}</atlassian.plugin.key>
         <atlassian.spring.scanner.version>2.1.5</atlassian.spring.scanner.version>
 
-        #if( $atlassianApp == "jira" )
+#if( $atlassianApp == "jira" )
         <jira.version>8.5.3</jira.version>
-        #end
+#end
 
-        #if( $atlassianApp == "confluence" )
+#if( $atlassianApp == "confluence" )
         <confluence.version>6.15.4</confluence.version>
-        #end
+#end
 
         <amps.version>8.0.2</amps.version>
 
@@ -56,7 +56,7 @@
 
 
     <dependencies>
-        #if( $atlassianApp == "jira" )
+#if( $atlassianApp == "jira" )
         <dependency>
             <groupId>com.atlassian.jira</groupId>
             <artifactId>jira-api</artifactId>
@@ -69,16 +69,16 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        #end
+#end
 
-        #if( $atlassianApp == "confluence" )
+#if( $atlassianApp == "confluence" )
         <dependency>
             <groupId>com.atlassian.confluence</groupId>
             <artifactId>confluence</artifactId>
             <version>${confluence.version}</version>
             <scope>provided</scope>
         </dependency>
-        #end
+#end
 
         <dependency>
             <groupId>com.atlassian.plugin</groupId>
