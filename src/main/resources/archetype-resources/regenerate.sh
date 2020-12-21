@@ -7,11 +7,16 @@ SCRIPT_DIR="$(
   pwd -P
 )"
 
-pushd "$PWD" || exit
-cd "$SCRIPT_DIR" && cd "../" || exit
-
+get_version_from_maven() {
+    mvn help:evaluate -Dexpression=project.version -q -DforceStdout | tail -n 1
+}
 
 FOLDER_NAME=$(basename "$SCRIPT_DIR")
+ARTIFACT_ID="$artifactId"
+VERSION=$(get_version_from_maven)
+
+pushd "$PWD" || exit
+cd "$SCRIPT_DIR" && cd "../" || exit
 
 echo "---------------------------------------------------"
 echo "Renaming existing project to $FOLDER_NAME-swap ..."
@@ -32,27 +37,40 @@ mvn archetype:generate -B -U \
     "-DgroupId=$groupId" \
     "-DartifactId=$artifactId" \
     "-Dpackage=$package" \
-    "-DnameHumanReadable='$nameHumanReadable'" \
-    "-Ddescription='$description'" \
-    "-DorganizationNameHumanReadable='$organizationNameHumanReadable'" \
+    "-DnameHumanReadable=$nameHumanReadable" \
+    "-Ddescription=$description" \
+    "-DorganizationNameHumanReadable=$organizationNameHumanReadable" \
     "-DorganizationUrl=$organizationUrl" \
     "-DinceptionYear=$inceptionYear" \
     "-DdeveloperConnection=$developerConnection" \
-    "-DgenerateBitbucketPipelines=$generateBitbucketPipelines"
+    "-DgenerateGithubActions=$generateGithubActions" \
+    "-DgenerateBitbucketPipelines=$generateBitbucketPipelines" \
+    "-DgenerateDockerEnvironment=false" \
+    "-DgenerateStubs=false"
+
+
+echo "---------------------------------------------------"
+echo "Post-process generated files ..."
+echo "---------------------------------------------------"
+# must not overwrite the script itself
+rm $ARTIFACT_ID/regenerate.sh
+# inject current project version into regenerated files
+sed -i -E "s/(.*)-[0-9]+\.[0-9]+\.[0-9]+.*\.jar/\1-$VERSION.jar/g" $ARTIFACT_ID/runConfigurations/package___deploy.xml
+sed -i -E "0,/<version>[0-9]+\.[0-9]+\.[0-9]+(.*)<\/version>/s/<version>[0-9]+\.[0-9]+\.[0-9]+(.*)<\/version>/<version>$VERSION<\/version>/" $ARTIFACT_ID/pom.xml
 
 
 echo "---------------------------------------------------"
 echo "Copy files into swap ..."
 echo "---------------------------------------------------"
 echo
-cp -R "$FOLDER_NAME" "$FOLDER_NAME-swap"
+cp -a "$ARTIFACT_ID/." "$FOLDER_NAME-swap/"
 
 
 echo "---------------------------------------------------"
 echo "Clean up ..."
 echo "---------------------------------------------------"
 echo
-rm -r "$FOLDER_NAME"
+rm -r "$ARTIFACT_ID"
 mv "$FOLDER_NAME-swap" "$FOLDER_NAME"
 
 popd || exit
