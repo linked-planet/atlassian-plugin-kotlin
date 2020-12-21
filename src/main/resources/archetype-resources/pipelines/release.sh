@@ -36,8 +36,8 @@ set_commit_version "$VERSION" "[skip ci] release v$VERSION"
 # build, deploy and tag that version
 echo_demarcation "Build, tag & deploy version $VERSION"
 mvn -B clean deploy scm:tag \
-  "-DaltReleaseDeploymentRepository=artifactory.release::$ARTIFACTORY_CONTEXT_URL/libs-release-local" \
-  "-DaltSnapshotDeploymentRepository=artifactory.snapshot::$ARTIFACTORY_CONTEXT_URL/libs-snapshot-local" \
+  "-DaltReleaseDeploymentRepository=artifactory::$ARTIFACTORY_CONTEXT_URL/libs-release-local" \
+  "-DaltSnapshotDeploymentRepository=artifactory::$ARTIFACTORY_CONTEXT_URL/libs-snapshot-local" \
   "-Ddeveloper.connection=scm:git:$BITBUCKET_GIT_HTTP_ORIGIN" \
   -Pci
 

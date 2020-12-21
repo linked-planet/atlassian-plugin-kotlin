@@ -35,8 +35,7 @@ jobs:
         uses: s4u/maven-settings-action@v2.1.0
         with:
           servers: '[
-          {"id": "artifactory.release", "username": "${env.ARTIFACTORY_USERNAME}", "password": "${env.ARTIFACTORY_PASSWORD}"},
-          {"id": "artifactory.snapshot", "username": "${env.ARTIFACTORY_USERNAME}", "password": "${env.ARTIFACTORY_PASSWORD}"}
+          {"id": "artifactory", "username": "${env.ARTIFACTORY_USERNAME}", "password": "${env.ARTIFACTORY_PASSWORD}"}
           ]'
 
       - name: Debug Maven Settings
@@ -47,8 +46,8 @@ jobs:
 
       - name: Build & Publish to Artifactory
         run: mvn -B deploy -Pci
-          -DaltReleaseDeploymentRepository=artifactory.release::${{ secrets.ARTIFACTORY_CONTEXT_URL }}/libs-release-local
-          -DaltSnapshotDeploymentRepository=artifactory.snapshot::${{ secrets.ARTIFACTORY_CONTEXT_URL }}/libs-snapshot-local
+          -DaltReleaseDeploymentRepository=artifactory::${{ secrets.ARTIFACTORY_CONTEXT_URL }}/libs-release-local
+          -DaltSnapshotDeploymentRepository=artifactory::${{ secrets.ARTIFACTORY_CONTEXT_URL }}/libs-snapshot-local
         env:
           ARTIFACTORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME }}
           ARTIFACTORY_PASSWORD: ${{ secrets.ARTIFACTORY_PASSWORD }}
