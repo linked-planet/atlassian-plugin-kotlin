@@ -32,7 +32,6 @@
 #if( $atlassianApp == "jira-insight" )
         <insight.version>8.6.11</insight.version>
 #end
-
 #if( $atlassianApp == "confluence" )
         <confluence.version>7.4.6</confluence.version>
 #end
@@ -81,7 +80,6 @@
             <scope>provided</scope>
         </dependency>
 #end
-
 #if( $atlassianApp == "confluence" )
         <dependency>
             <groupId>com.atlassian.confluence</groupId>
