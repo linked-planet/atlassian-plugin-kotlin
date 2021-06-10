@@ -10,9 +10,8 @@ void deleteRecursive(Path path) throws IOException {
     if (file.isDirectory()) {
         for (File c : file.listFiles())
             deleteRecursive c.toPath()
-    } else if (file.isFile()) {
-        file.delete()
     }
+    file.delete()
 }
 
 String atlassianApp = request.properties.get("atlassianApp")
