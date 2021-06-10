@@ -4,7 +4,6 @@ import org.jetbrains.kotlin.gradle.targets.js.nodejs.*
 println("Gradle Version: " + GradleVersion.current().toString())
 println("Java Version: " + JavaVersion.current().toString())
 
-val buildVersion: String = System.getProperty("buildVersion", "BUILD_VERSION")
 val kotlinVersion = "1.4.32"
 
 group = "${groupId}"
@@ -27,7 +26,7 @@ kotlin {
                 )
             }
             webpackTask {
-                outputFileName = "${project.name}-$buildVersion.js"
+                outputFileName = "${project.name}.js"
             }
         }
         binaries.executable()
