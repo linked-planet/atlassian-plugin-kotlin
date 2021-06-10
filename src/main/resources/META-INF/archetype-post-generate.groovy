@@ -46,3 +46,7 @@ if (!generateDockerEnvironment) {
 if (!generateStubs) {
     deleteRecursive projectPath.resolve("src")
 }
+
+def frontendPath = projectPath.resolve("frontend")
+frontendPath.resolve("gradlew").toFile().setExecutable(true)
+frontendPath.resolve("gradlew.bat").toFile().setExecutable(true)

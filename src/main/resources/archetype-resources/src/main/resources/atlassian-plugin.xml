@@ -6,5 +6,31 @@
     </plugin-info>
 
     <resource type="i18n" name="i18n" location="i18n/plugin"/>
+    <resource type="download" name="js/" location="/js"/>
+
+    <!-- .................................................................. -->
+    <!-- TOP LEVEL APP MENU -->
+    <!-- .................................................................. -->
+    <web-item key="app-item" section="system.top.navigation.bar">
+        <label key="app-item.label"/>
+        <link linkId="app-dropdown"/>
+    </web-item>
+
+    <web-section key="app-section" location="app-dropdown"/>
+
+    <web-item key="module-item" section="app-dropdown/app-section">
+        <label key="module-item.label"/>
+        <link>/secure/ModuleAction!default.jspa</link>
+    </web-item>
+
+    <webwork1 key="app-action">
+        <actions>
+            <action name="${package}.impl.action.ModuleAction"
+                    alias="ModuleAction">
+                <view name="input">/templates/action/module.vm</view>
+                <view name="success">/templates/action/module.vm</view>
+            </action>
+        </actions>
+    </webwork1>
 
 </atlassian-plugin>

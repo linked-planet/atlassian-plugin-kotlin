@@ -365,6 +365,7 @@
                         <exclude>**/plugin.properties</exclude>
                         <exclude>**/log4j.properties</exclude>
                         <exclude>**/kaptKotlin/**/*</exclude>
+                        <exclude>**/*.min.js</exclude>
                     </excludes>
                     <excludedScopes>provided,test</excludedScopes>
                 </configuration>
@@ -415,6 +416,29 @@
                     <baseUrl>${deploy.url}</baseUrl>
                     <username>${deploy.username}</username>
                     <password>${deploy.password}</password>
+                </configuration>
+            </plugin>
+
+            <!-- build frontend -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>gradle</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <executable>frontend/gradlew</executable>
+                    <arguments>
+                        <argument>clean</argument>
+                        <argument>build</argument>
+                    </arguments>
+                    <workingDirectory>${basedir}/frontend</workingDirectory>
                 </configuration>
             </plugin>
         </plugins>
