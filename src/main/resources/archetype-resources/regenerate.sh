@@ -47,6 +47,7 @@ mvn archetype:generate -B -U \
     "-DgenerateBitbucketPipelines=$generateBitbucketPipelines" \
     "-DgenerateDockerEnvironment=false" \
     "-DgenerateStubs=false" \
+    "-DgenerateFrontend=$generateFrontend" \
     "-Dgoals=license:update-file-header"
 
 

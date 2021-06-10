@@ -83,6 +83,9 @@
         <requiredProperty key="generateStubs">
             <defaultValue>true</defaultValue>
         </requiredProperty>
+        <requiredProperty key="generateFrontend">
+            <defaultValue>true</defaultValue>
+        </requiredProperty>
     </requiredProperties>
 
 </archetype-descriptor>
