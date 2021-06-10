@@ -8,7 +8,7 @@ import kotlin.reflect.KProperty1
 
 data class AppState(
     val notifications: List<Notification> = emptyList(),
-    val screen: MainComponent.Screen = MainComponent.Screen.Loading,
+    val screen: MainComponent.Screen = MainComponent.Screen.Main,
     val chaosMode: Boolean = false
 )
 
