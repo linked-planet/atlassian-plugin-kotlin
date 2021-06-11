@@ -8,6 +8,9 @@
             <directory>frontend/src/main/kotlin</directory>
         </fileSet>
         <fileSet encoding="UTF-8">
+            <directory>frontend/src/main/resources</directory>
+        </fileSet>
+        <fileSet encoding="UTF-8">
             <directory>frontend/webpack.config.d</directory>
         </fileSet>
         <fileSet encoding="UTF-8">
