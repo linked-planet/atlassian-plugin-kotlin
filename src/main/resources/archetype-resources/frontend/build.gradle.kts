@@ -19,6 +19,7 @@ kotlin {
         browser {
             runTask {
                 devServer = devServer?.copy(
+                    open = false,
                     proxy = mapOf(
                         "context" to arrayOf("/**/*"),
                         "target" to "http://localhost:9090"
