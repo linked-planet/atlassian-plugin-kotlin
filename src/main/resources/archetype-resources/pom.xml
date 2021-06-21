@@ -486,30 +486,13 @@
 
 
     <repositories>
-        <repository>
-            <id>atlassian-public</id>
-            <url>https://maven.atlassian.com/repository/public</url>
-        </repository>
 #if( $atlassianApp == "jira-insight" )
         <repository>
             <id>riada-repository</id>
             <url>https://repo.riada.io/repository/riada-repo/</url>
         </repository>
 #end
-        <!-- jndi -->
-        <repository>
-            <id>geomajas</id>
-            <url>http://maven.geomajas.org</url>
-        </repository>
     </repositories>
-
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>atlassian-public</id>
-            <url>https://maven.atlassian.com/repository/public</url>
-        </pluginRepository>
-    </pluginRepositories>
 
 
     <scm>
