@@ -23,9 +23,9 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.m2/repository
-          key: ${{ runner.os }}-atlassian-plugin-maven-${{ steps.date.outputs.date }}
+          key: ${{ runner.os }}-${{ steps.date.outputs.date }}-atlassian-plugin-maven
           restore-keys: |
-            ${{ runner.os }}-atlassian-plugin-maven-${{ steps.date.outputs.date }}
+            ${{ runner.os }}-${{ steps.date.outputs.date }}-atlassian-plugin-maven
 
       - name: Set up JDK 1.8
         uses: actions/setup-java@v1

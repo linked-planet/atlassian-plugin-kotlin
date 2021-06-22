@@ -485,16 +485,6 @@
     </profiles>
 
 
-    <repositories>
-#if( $atlassianApp == "jira-insight" )
-        <repository>
-            <id>riada-repository</id>
-            <url>https://repo.riada.io/repository/riada-repo/</url>
-        </repository>
-#end
-    </repositories>
-
-
     <scm>
         <!-- change of SCM should be possible without change of pom.xml -->
         <developerConnection>${developer.connection}</developerConnection>
