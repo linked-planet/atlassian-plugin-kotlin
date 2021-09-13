@@ -359,7 +359,7 @@
                         <exclude>**/plugin.properties</exclude>
                         <exclude>**/log4j.properties</exclude>
                         <exclude>**/kaptKotlin/**/*</exclude>
-                        <exclude>**/*.min.js</exclude>
+                        <exclude>**/*-min.js</exclude>
                     </excludes>
                     <excludedScopes>provided,test</excludedScopes>
                 </configuration>
