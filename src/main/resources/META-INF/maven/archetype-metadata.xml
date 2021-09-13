@@ -19,6 +19,7 @@
         <fileSet filtered="true" encoding="UTF-8">
             <directory>frontend</directory>
             <includes>
+                <include>.gitignore</include>
                 <include>build.gradle.kts</include>
                 <include>gradlew</include>
                 <include>gradlew.bat</include>
