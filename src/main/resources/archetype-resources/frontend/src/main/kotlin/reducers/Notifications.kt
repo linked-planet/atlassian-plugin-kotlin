@@ -1,7 +1,7 @@
 package reducers
 
 import app.appStore
-import common.model.*
+import model.*
 import redux.RAction
 
 // ACTIONS

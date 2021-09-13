@@ -2,7 +2,7 @@ package component.main
 
 import app.AppState
 import component.pages.mainPage.mainPage
-import common.model.*
+import model.*
 import reducers.*
 import imports.atlaskit.flag.*
 import imports.atlaskit.icon.*

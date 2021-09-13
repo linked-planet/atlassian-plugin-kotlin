@@ -1,7 +1,7 @@
 package app
 
 import component.main.MainComponent
-import common.model.*
+import model.*
 import reducers.*
 import redux.*
 import kotlin.reflect.KProperty1
