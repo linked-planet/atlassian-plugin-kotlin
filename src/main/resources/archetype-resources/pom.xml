@@ -450,7 +450,7 @@
                     <plugin>
                         <groupId>org.jetbrains.dokka</groupId>
                         <artifactId>dokka-maven-plugin</artifactId>
-                        <version>0.9.18</version>
+                        <version>1.4.32</version>
                         <executions>
                             <execution>
                                 <phase>prepare-package</phase>
