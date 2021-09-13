@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.targets.js.nodejs.*
 
 println("Gradle Version: " + GradleVersion.current().toString())
 println("Java Version: " + JavaVersion.current().toString())
-
+val ciProfile = if (ext.has("ci")) (ext.get("ci") as String).toBoolean() else false
 val kotlinVersion = "1.4.32"
 
 group = "${groupId}"
@@ -17,17 +17,21 @@ kotlin {
     js {
         useCommonJs()
         browser {
+            compilations.all {
+                compileKotlinTask.kotlinOptions.freeCompilerArgs += listOf("-Xopt-in=kotlin.RequiresOptIn")
+            }
             runTask {
                 devServer = devServer?.copy(
-                    open = false,
-                    proxy = mapOf(
-                        "context" to arrayOf("/**/*"),
-                        "target" to "http://localhost:9090"
-                    )
+                    // frontend is embedded, so no point in opening a separate browser window
+                    open = false
                 )
             }
             webpackTask {
                 outputFileName = "${project.name}.js"
+            }
+            dceTask {
+                // list exported but unused functions to protect from DCE
+                //keep("frontend.someProtectedFunction")
             }
         }
         binaries.executable()
@@ -55,6 +59,7 @@ dependencies {
     implementation(npm("core-js", "3"))
 
     // Atlaskit
+    implementation(npm("@atlaskit/banner", "^11.2.2"))
     implementation(npm("@atlaskit/button", "^13.0.1"))
     implementation(npm("@atlaskit/checkbox", "^7.0.0"))
     implementation(npm("@atlaskit/dropdown-menu", "10.0.0"))
@@ -75,6 +80,7 @@ dependencies {
     implementation(npm("@atlaskit/popup", "0.6.0"))
     implementation(npm("@atlaskit/menu", "0.5.0"))
     implementation(npm("styled-components", "^3.5.0-0"))
+    implementation(npm("@fortawesome/fontawesome-free", "^5.15.1"))
 
     // Redux
     implementation(npm("redux", reduxVersion))
@@ -92,8 +98,10 @@ dependencies {
 }
 
 // without this, node will fail to execute in the Bitbucket Pipeline Build Container
-rootProject.plugins.withType(NodeJsRootPlugin::class.java) {
-    rootProject.the<NodeJsRootExtension>().download = false
+if (ciProfile) {
+    rootProject.plugins.withType(NodeJsRootPlugin::class.java) {
+        rootProject.the<NodeJsRootExtension>().download = false
+    }
 }
 
 repositories {
