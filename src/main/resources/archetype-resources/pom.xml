@@ -503,20 +503,27 @@
 
                     <!-- COPY FRONTEND INTO PLUGIN RESOURCES -->
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-antrun-plugin</artifactId>
-                        <version>1.8</version>
+                        <groupId>com.coderplus.maven.plugins</groupId>
+                        <artifactId>copy-rename-maven-plugin</artifactId>
+                        <version>1.0.1</version>
                         <executions>
                             <execution>
+                                <id>copy-file</id>
                                 <phase>prepare-package</phase>
                                 <goals>
-                                    <goal>run</goal>
+                                    <goal>copy</goal>
                                 </goals>
                                 <configuration>
-                                    <target>
-                                        <copy file="${basedir}/frontend/build/distributions/frontend.js"
-                                              tofile="${basedir}/src/main/resources/js/frontend.min.js"/>
-                                    </target>
+                                    <fileSets>
+                                        <fileSet>
+                                            <sourceFile>${basedir}/frontend/build/distributions/frontend.js</sourceFile>
+                                            <destinationFile>${project.build.outputDirectory}/js/frontend-min.js</destinationFile>
+                                        </fileSet>
+                                        <fileSet>
+                                            <sourceFile>${basedir}/frontend/build/distributions/frontend.js.map</sourceFile>
+                                            <destinationFile>${project.build.outputDirectory}/js/frontend-min.js.map</destinationFile>
+                                        </fileSet>
+                                    </fileSets>
                                 </configuration>
                             </execution>
                         </executions>
