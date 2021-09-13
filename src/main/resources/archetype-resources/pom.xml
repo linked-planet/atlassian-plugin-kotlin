@@ -496,10 +496,7 @@
                         </executions>
                         <configuration>
                             <executable>frontend/gradlew</executable>
-                            <arguments>
-                                <argument>clean</argument>
-                                <argument>build</argument>
-                            </arguments>
+                            <commandlineArgs>clean build -Pci=true</commandlineArgs>
                             <workingDirectory>${basedir}/frontend</workingDirectory>
                         </configuration>
                     </plugin>
