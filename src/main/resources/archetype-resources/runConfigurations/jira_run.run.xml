@@ -12,7 +12,6 @@
             <list>
               <option value="jira:run" />
               <option value="-Datlassian.dev.mode=false" />
-              <option value="-Dfrontend.devMode=true" />
             </list>
           </option>
           <option name="pomFileName" />

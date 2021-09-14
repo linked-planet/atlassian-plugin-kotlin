@@ -5,6 +5,9 @@
 Creates a Jira or Confluence plugin to be implemented with the
 [Kotlin](https://kotlinlang.org/) programming language.
 
+Also provides the ability to create frontend modules using
+KotlinJS / React.
+
 
 ## Usage
 
@@ -28,6 +31,9 @@ Use [install-all-tags.sh](install-all-tags.sh) to install all available tags on 
 | generateDockerEnvironment | Whether to generate a `docker-compose.yml` with a basic Atlassian-provided app container |
 | generateStubs | Whether to generate stubs (all archetype files in `src`) |
 | generateFrontend | Whether to generate a separate React/KotlinJS frontend  |
+| frontendAppName | Name of the first app to generate, lower camel case |
+| frontendAppNameUpperCamelCase | Name of the first app to generate, upper camel case |
+| frontendAppNameKebabCase | Name of the first app to generate, kebab case |
 
 ### Example
 ```
@@ -50,6 +56,9 @@ mvn archetype:generate -B \
     "-DgenerateDockerEnvironment=true" \
     "-DgenerateStubs=true" \
     "-DgenerateFrontend=true" \
+    "-DfrontendAppName=exampleApp" \
+    "-DfrontendAppNameUpperCamelCase=ExampleApp" \
+    "-DfrontendAppNameKebabCase=example-app" \
     "-Dgoals=license:update-file-header"
 ```
 

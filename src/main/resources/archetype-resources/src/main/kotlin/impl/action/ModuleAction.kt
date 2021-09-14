@@ -7,7 +7,4 @@ class ModuleAction
 @Inject
 constructor() : WrapperWebActionSupport() {
 
-    @Suppress("unused") // velocity
-    var frontendDevMode: Boolean = System.getProperty("frontend.devMode").toBoolean()
-
 }

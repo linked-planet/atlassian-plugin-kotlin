@@ -30,8 +30,10 @@ kotlin {
                 outputFileName = "${project.name}.js"
             }
             dceTask {
-                // list exported but unused functions to protect from DCE
-                //keep("frontend.someProtectedFunction")
+                // list exported, unused functions to protect from dead-code-elimination
+                keep(
+                    "frontend.start${frontendAppNameUpperCamelCase}", "frontend.stop${frontendAppNameUpperCamelCase}"
+                )
             }
         }
         binaries.executable()

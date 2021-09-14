@@ -4,10 +4,10 @@
         xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd">
 
     <fileSets>
-        <fileSet encoding="UTF-8">
+        <fileSet filtered="true" encoding="UTF-8">
             <directory>frontend/src/main/kotlin</directory>
         </fileSet>
-        <fileSet encoding="UTF-8">
+        <fileSet filtered="true" encoding="UTF-8">
             <directory>frontend/src/main/resources</directory>
         </fileSet>
         <fileSet encoding="UTF-8">
@@ -89,6 +89,15 @@
         </requiredProperty>
         <requiredProperty key="generateFrontend">
             <defaultValue>true</defaultValue>
+        </requiredProperty>
+        <requiredProperty key="frontendAppName">
+            <defaultValue>exampleApp</defaultValue>
+        </requiredProperty>
+        <requiredProperty key="frontendAppNameUpperCamelCase">
+            <defaultValue>ExampleApp</defaultValue>
+        </requiredProperty>
+        <requiredProperty key="frontendAppNameKebabCase">
+            <defaultValue>example-app</defaultValue>
         </requiredProperty>
     </requiredProperties>
 

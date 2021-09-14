@@ -1,0 +1,14 @@
+#app-${frontendAppNameKebabCase} {
+
+  // --------------------------------------------------------------------------------------------
+  // make the app take the full width & height within the container
+  // --------------------------------------------------------------------------------------------
+  #main-component {
+    flex: 1;
+    display: flex;
+
+    // necessary to scroll max-height children
+    min-height: 0;
+  }
+
+}
