@@ -9,7 +9,6 @@
     <resource type="i18n" name="i18n" location="i18n/plugin"/>
 
 #if( $generateFrontend == "true" )
-
     <!-- $h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h -->
     <!-- WEB RESOURCES -->
     <!-- $h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h -->
@@ -22,7 +21,7 @@
 
     <resource type="download" name="js/" location="/js"/>
 
-    #if( $atlassianApp.contains("jira") )
+#if( $atlassianApp.contains("jira") )
     <!-- $h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h -->
     <!-- TOP LEVEL APP MENU -->
     <!-- $h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h$h -->
@@ -47,9 +46,9 @@
             </action>
         </actions>
     </webwork1>
-    #end
+#end
 
-    #if( $atlassianApp.contains("confluence") )
+#if( $atlassianApp.contains("confluence") )
     <web-item key="module-item" section="system.header/left" weight="42">
         <label key="module-item.label"/>
         <link>/plugins/module/module.action</link>
@@ -65,7 +64,7 @@
             </action>
         </package>
     </xwork>
-    #end
+#end
 
 #end
 

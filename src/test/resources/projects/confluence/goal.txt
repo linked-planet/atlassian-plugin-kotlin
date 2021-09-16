@@ -1,1 +1,1 @@
-license:update-file-header clean verify -Pci
+license:update-file-header clean verify -Pci -Dhttp.port=8080
