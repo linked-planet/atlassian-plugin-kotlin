@@ -17,7 +17,7 @@ class SeleniumIntegrationTest {
 
     @After
     fun shutdown() {
-        driver.quit()
+        driver.close()
     }
 
     private fun openModuleUrl() {
