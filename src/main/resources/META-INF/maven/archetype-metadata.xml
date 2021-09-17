@@ -102,6 +102,7 @@
         <requiredProperty key="frontendAppNameKebabCase">
             <defaultValue>example-app</defaultValue>
         </requiredProperty>
+        <requiredProperty key="httpPort"/>
     </requiredProperties>
 
 </archetype-descriptor>

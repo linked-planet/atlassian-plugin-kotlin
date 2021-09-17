@@ -50,7 +50,7 @@ class SeleniumIntegrationTest {
     }
 
     private companion object {
-        private const val BASE_URL = "http://localhost:8080"
+        private const val BASE_URL = "http://localhost:${httpPort}"
 #if( $atlassianApp == "jira" || $atlassianApp == "jira-insight" )
         private const val MODULE_URL = "$BASE_URL/secure/ModuleAction!default.jspa"
 #elseif( $atlassianApp == "confluence" )
