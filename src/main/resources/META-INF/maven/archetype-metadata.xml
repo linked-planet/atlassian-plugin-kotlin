@@ -5,6 +5,9 @@
 
     <fileSets>
         <fileSet filtered="true" encoding="UTF-8">
+            <directory>.mvn</directory>
+        </fileSet>
+        <fileSet filtered="true" encoding="UTF-8">
             <directory>frontend/src/main/kotlin</directory>
         </fileSet>
         <fileSet filtered="true" encoding="UTF-8">

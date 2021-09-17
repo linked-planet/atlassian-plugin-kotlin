@@ -568,51 +568,6 @@
     </profiles>
 
 
-    <repositories>
-        <repository>
-            <id>atlassian-public</id>
-            <url>https://maven.atlassian.com/repository/public</url>
-        </repository>
-        <repository>
-            <id>central</id>
-            <url>https://repo1.maven.org/maven2</url>
-        </repository>
-#if( $atlassianApp == "jira-insight" )
-        <repository>
-            <id>riada-repository</id>
-            <url>https://repo.riada.io/repository/riada-repo/</url>
-        </repository>
-#end
-    </repositories>
-
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>atlassian-public</id>
-            <url>https://maven.atlassian.com/repository/public</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-                <checksumPolicy>warn</checksumPolicy>
-            </releases>
-        </pluginRepository>
-        <pluginRepository>
-            <id>central</id>
-            <name>Maven Central</name>
-            <url>https://repo1.maven.org/maven2</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-                <checksumPolicy>warn</checksumPolicy>
-            </releases>
-        </pluginRepository>
-    </pluginRepositories>
-
-
     <scm>
         <!-- change of SCM should be possible without change of pom.xml -->
         <developerConnection>${developer.connection}</developerConnection>

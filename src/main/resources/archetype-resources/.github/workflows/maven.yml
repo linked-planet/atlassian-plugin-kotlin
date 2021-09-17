@@ -31,19 +31,6 @@ jobs:
         with:
           java-version: 1.8
 
-      - name: Setup Maven
-        uses: s4u/maven-settings-action@v2.1.0
-        with:
-          servers: '[
-          {"id": "artifactory", "username": "${env.ARTIFACTORY_USERNAME}", "password": "${env.ARTIFACTORY_PASSWORD}"}
-          ]'
-
-      - name: Debug Maven Settings
-        run: mvn -B help:effective-settings
-        env:
-          ARTIFACTORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME }}
-          ARTIFACTORY_PASSWORD: ${{ secrets.ARTIFACTORY_PASSWORD }}
-
       - name: Build & Publish to Artifactory
         run: mvn -B deploy -Pci
           -DaltReleaseDeploymentRepository=artifactory::${{ secrets.ARTIFACTORY_CONTEXT_URL }}/libs-release-local
