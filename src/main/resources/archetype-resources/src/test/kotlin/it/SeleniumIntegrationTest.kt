@@ -62,6 +62,7 @@ class SeleniumIntegrationTest {
         @BeforeClass
         @JvmStatic
         fun configureSelenium() {
+            System.setProperty("webdriver.gecko.driver", "target/test-classes/drivers/geckodriver-linux-64bit")
             val capabilities = DesiredCapabilities.firefox()
             driver = FirefoxDriver(capabilities)
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS)
