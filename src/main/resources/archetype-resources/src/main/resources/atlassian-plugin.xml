@@ -15,7 +15,7 @@
     <web-resource key="frontend-utility">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
         <resource type="download" name="frontend-utility.js" location="js/frontend-utility.js"/>
-        <resource type="download" name="frontend-utility.css" location="css/frontend-utility.js"/>
+        <resource type="download" name="frontend-utility.css" location="css/frontend-utility.css"/>
         <context>atl.general</context>
     </web-resource>
 
