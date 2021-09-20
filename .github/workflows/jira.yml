@@ -33,6 +33,6 @@ jobs:
           java-version: 1.8
 
       - name: Build with Maven
-        run: mvn -B verify -Darchetype.test.projectsDirectory=target/test-classes/jira
+        run: mvn -B install -Darchetype.test.projectsDirectory=target/test-classes/jira
         env:
           MOZ_HEADLESS: 1 # run firefox in headless mode for executing selenium tests

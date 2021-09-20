@@ -8,7 +8,12 @@ class PluginComponentIntegrationTest {
     @Test
     fun indexSuccess() {
         RestAssured.baseURI = "http://localhost"
-        RestAssured.port = ${httpPort}
+#if( $atlassianApp == "jira" || $atlassianApp == "jira-insight"  )
+        RestAssured.port = 2990
+#end
+#if( $atlassianApp == "confluence" )
+        RestAssured.port = 1990
+#end
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails()
 
         RestAssured.given()

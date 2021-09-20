@@ -37,7 +37,6 @@
 #end
 
         <amps.version>8.2.0</amps.version>
-        <http.port>${httpPort}</http.port>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -143,17 +142,17 @@
             <version>4.2.1</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>3.4.0</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
 
     <build>
         <testSourceDirectory>src/test/kotlin</testSourceDirectory>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
 
         <plugins>
             <!-- BUILD HELPER -->
@@ -266,7 +265,6 @@
                     <contextPath>/</contextPath>
                     <enableQuickReload>true</enableQuickReload>
                     <jvmArgs>-Xms2g -Xmx2g -XX:+UseG1GC</jvmArgs>
-                    <httpPort>${http.port}</httpPort>
                     <!-- https://developer.atlassian.com/docs/advanced-topics/configuration-of-instructions-in-atlassian-plugins -->
                     <instructions>
                         <Atlassian-Plugin-Key>${atlassian.plugin.key}</Atlassian-Plugin-Key>
@@ -314,7 +312,6 @@
                     <contextPath>/</contextPath>
                     <enableQuickReload>true</enableQuickReload>
                     <jvmArgs>-Xms2g -Xmx2g -XX:+UseG1GC</jvmArgs>
-                    <httpPort>${http.port}</httpPort>
                     <ajpPort>8010</ajpPort>
                     <!-- https://developer.atlassian.com/docs/advanced-topics/configuration-of-instructions-in-atlassian-plugins -->
                     <instructions>
@@ -379,31 +376,6 @@
                 </executions>
             </plugin>
 
-            <!-- INSTALL SELENIUM WEBDRIVER FOR TEST EXECUTION -->
-            <plugin>
-                <groupId>com.github.webdriverextensions</groupId>
-                <artifactId>webdriverextensions-maven-plugin</artifactId>
-                <version>3.2.0</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>install-drivers</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <installationDirectory>${project.build.testOutputDirectory}/drivers</installationDirectory>
-                    <drivers>
-                        <driver>
-                            <name>geckodriver</name>
-                            <platform>linux</platform>
-                            <bit>64</bit>
-                            <version>0.24.0</version>
-                        </driver>
-                    </drivers>
-                </configuration>
-            </plugin>
-
             <!-- INTEGRATION TEST -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -432,9 +404,9 @@
 
             <!-- UPM -->
             <plugin>
-                <groupId>com.linked-planet.maven</groupId>
+                <groupId>com.link-time.maven.plugin.atlassian</groupId>
                 <artifactId>upm-maven-plugin</artifactId>
-                <version>2.0.1</version>
+                <version>1.0.2</version>
                 <configuration>
                     <baseUrl>${deploy.url}</baseUrl>
                     <username>${deploy.username}</username>
@@ -479,7 +451,7 @@
                     <plugin>
                         <groupId>org.jetbrains.dokka</groupId>
                         <artifactId>dokka-maven-plugin</artifactId>
-                        <version>1.4.32</version>
+                        <version>0.9.18</version>
                         <executions>
                             <execution>
                                 <phase>prepare-package</phase>
