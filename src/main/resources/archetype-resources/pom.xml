@@ -314,6 +314,7 @@
                     <contextPath>/</contextPath>
                     <enableQuickReload>true</enableQuickReload>
                     <jvmArgs>-Xms2g -Xmx2g -XX:+UseG1GC</jvmArgs>
+                    <httpPort>${http.port}</httpPort>
                     <ajpPort>8010</ajpPort>
                     <!-- https://developer.atlassian.com/docs/advanced-topics/configuration-of-instructions-in-atlassian-plugins -->
                     <instructions>
