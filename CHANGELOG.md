@@ -1,10 +1,10 @@
 # Change Log
 
-## [Unreleased] - yyyy-mm-dd
+## 3.2.0 - 2021-09-20
 
 ### Added
 
-- **KotlinJS / React integration**
+- **KotlinJS / React Integration**
     - It is now possible to generate build infrastructure & stubs that enable creation of modern SPA modules that can be
       integrated into the plugin wherever you like to use them.
     - The frontend build is based on Gradle, but is integrated into the encompassing Maven plugin build, so there is a
@@ -24,5 +24,7 @@
 
 - The `install-all-tags.sh` was changed to `install-latest-tag.sh`, because only the latest version is usually needed
   and because it takes a lot of time to install all tags.
-- Upgraded Jira and Confluence versions to latest LTS versions
+- Upgraded Jira and Confluence versions to the latest LTS versions
+  - Jira 8.13.11
+  - Confluence 7.13.0
 
