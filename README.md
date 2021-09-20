@@ -7,7 +7,10 @@
 Creates a Jira or Confluence plugin to be implemented with the
 [Kotlin](https://kotlinlang.org/) programming language.
 
-Also provides the ability to create frontend modules using KotlinJS / React.
+Also provides the ability to create SPA frontend modules using
+[KotlinJS](https://kotlinlang.org/docs/js-overview.html) / [ReactJS](https://reactjs.org/)
+via [JetBrains KotlinJS Wrappers](https://github.com/JetBrains/kotlin-wrappers),
+utilizing [Atlaskit UI Widgets](https://atlaskit.atlassian.com/).
 
 ## Usage
 
