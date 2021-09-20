@@ -58,7 +58,7 @@ mvn archetype:generate -B \
     "-Ddescription=Description of New Plugin" \
     "-DorganizationNameHumanReadable=linked-planet GmbH" \
     "-DorganizationUrl=https://linked-planet.com" \
-    "-DinceptionYear=2020" \
+    "-DinceptionYear=2021" \
     "-DdeveloperConnection=scm:git:https://github.com/linked-planet/new-plugin.git" \
     "-DgenerateGithubActions=true" \
     "-DgenerateBitbucketPipelines=true" \
@@ -88,7 +88,7 @@ mvn archetype:generate -B \
     "-Ddescription=Description of New Plugin" \
     "-DorganizationNameHumanReadable=linked-planet GmbH" \
     "-DorganizationUrl=https://linked-planet.com" \
-    "-DinceptionYear=2020" \
+    "-DinceptionYear=2021" \
     "-DdeveloperConnection=scm:git:https://github.com/linked-planet/new-plugin.git" \
     "-DgenerateGithubActions=true" \
     "-DgenerateBitbucketPipelines=true" \
