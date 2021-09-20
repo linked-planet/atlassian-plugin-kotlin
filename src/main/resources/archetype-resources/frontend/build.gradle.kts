@@ -4,13 +4,13 @@ import org.jetbrains.kotlin.gradle.targets.js.nodejs.*
 println("Gradle Version: " + GradleVersion.current().toString())
 println("Java Version: " + JavaVersion.current().toString())
 val ciProfile = if (ext.has("ci")) (ext.get("ci") as String).toBoolean() else false
-val kotlinVersion = "1.4.32"
+val kotlinVersion = "1.5.31"
 
 group = "${groupId}"
 version = "0.1.0-SNAPSHOT"
 
 plugins {
-    kotlin("js") version "1.4.32"
+    kotlin("js") version "1.5.31"
 }
 
 kotlin {
@@ -40,7 +40,7 @@ kotlin {
     }
 }
 
-val kotlinWrapperVersion = "pre.154-kotlin-$kotlinVersion"
+val kotlinWrapperVersion = "pre.247-kotlin-$kotlinVersion"
 val reduxVersion = "4.0.5"
 val reactVersion = "17.0.2"
 val reactReduxVersion = "7.2.3"
@@ -49,11 +49,11 @@ dependencies {
 
     implementation("org.jetbrains.kotlinx", "kotlinx-coroutines-core-js", "1.1.1")
     implementation("org.jetbrains.kotlinx", "kotlinx-html-js", "0.7.3")
-    implementation("org.jetbrains", "kotlin-extensions", "1.0.1-$kotlinWrapperVersion")
-    implementation("org.jetbrains", "kotlin-react", "$reactVersion-$kotlinWrapperVersion")
-    implementation("org.jetbrains", "kotlin-react-dom", "$reactVersion-$kotlinWrapperVersion")
-    implementation("org.jetbrains", "kotlin-redux", "$reduxVersion-$kotlinWrapperVersion")
-    implementation("org.jetbrains", "kotlin-react-redux", "$reactReduxVersion-$kotlinWrapperVersion")
+    implementation("org.jetbrains.kotlin-wrappers", "kotlin-extensions", "1.0.1-$kotlinWrapperVersion")
+    implementation("org.jetbrains.kotlin-wrappers", "kotlin-react", "$reactVersion-$kotlinWrapperVersion")
+    implementation("org.jetbrains.kotlin-wrappers", "kotlin-react-dom", "$reactVersion-$kotlinWrapperVersion")
+    implementation("org.jetbrains.kotlin-wrappers", "kotlin-redux", "$reduxVersion-$kotlinWrapperVersion")
+    implementation("org.jetbrains.kotlin-wrappers", "kotlin-react-redux", "$reactReduxVersion-$kotlinWrapperVersion")
 
     // React
     implementation(npm("react", reactVersion))

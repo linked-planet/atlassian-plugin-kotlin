@@ -24,7 +24,7 @@
     <properties>
         <!-- This key is used to keep the consistency between the key in atlassian-plugin.xml and the key to generate bundle. -->
         <atlassian.plugin.key>${project.groupId}.${project.artifactId}</atlassian.plugin.key>
-        <atlassian.spring.scanner.version>2.2.1</atlassian.spring.scanner.version>
+        <atlassian.spring.scanner.version>2.2.3</atlassian.spring.scanner.version>
 
 #if( $atlassianApp == "jira" || $atlassianApp == "jira-insight" )
         <jira.version>${atlassianAppVersion}</jira.version>
@@ -45,7 +45,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
-        <kotlin.version>1.4.21</kotlin.version>
+        <kotlin.version>1.5.31</kotlin.version>
 
         <!-- @formatter:off -->
         <developer.connection>${developerConnection}</developer.connection>
@@ -134,7 +134,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.13.1</version>
+            <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>
