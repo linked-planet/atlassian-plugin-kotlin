@@ -8,6 +8,7 @@ import org.openqa.selenium.remote.DesiredCapabilities
 import org.openqa.selenium.support.ui.*
 import java.util.concurrent.TimeUnit
 
+@Ignore
 class SeleniumIntegrationTest {
 
     @Test
