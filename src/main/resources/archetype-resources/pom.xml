@@ -316,8 +316,6 @@
                     <jvmArgs>-Xms2g -Xmx2g -XX:+UseG1GC</jvmArgs>
                     <httpPort>${http.port}</httpPort>
                     <ajpPort>8010</ajpPort>
-                    <server>localhost</server>
-                    <startupTimeout>1800000</startupTimeout>
                     <!-- https://developer.atlassian.com/docs/advanced-topics/configuration-of-instructions-in-atlassian-plugins -->
                     <instructions>
                         <Atlassian-Plugin-Key>${atlassian.plugin.key}</Atlassian-Plugin-Key>
