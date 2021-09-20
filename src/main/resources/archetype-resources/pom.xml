@@ -513,6 +513,29 @@
                             </execution>
                         </executions>
                     </plugin>
+
+
+#if( $generateFrontend == "true" )
+                    <!-- BUILD FRONTEND -->
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>gradle</id>
+                                <phase>compile</phase>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <executable>frontend/gradlew</executable>
+                            <commandlineArgs>clean build -Pci=true</commandlineArgs>
+                            <workingDirectory>${basedir}/frontend</workingDirectory>
+                        </configuration>
+                    </plugin>
+#end
                 </plugins>
             </build>
         </profile>
