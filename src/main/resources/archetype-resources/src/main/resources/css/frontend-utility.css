@@ -1,0 +1,11 @@
+.app-main .util-align-loading-spinner {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.app-main .util-align-loading-spinner *:first-child {
+    margin-bottom: 20px;
+}

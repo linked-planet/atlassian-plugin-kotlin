@@ -37,6 +37,7 @@
 #end
 
         <amps.version>8.2.0</amps.version>
+        <http.port>${httpPort}</http.port>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -142,17 +143,17 @@
             <version>4.2.1</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>3.4.0</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
 
     <build>
         <testSourceDirectory>src/test/kotlin</testSourceDirectory>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
 
         <plugins>
             <!-- BUILD HELPER -->
@@ -265,6 +266,7 @@
                     <contextPath>/</contextPath>
                     <enableQuickReload>true</enableQuickReload>
                     <jvmArgs>-Xms2g -Xmx2g -XX:+UseG1GC</jvmArgs>
+                    <httpPort>${http.port}</httpPort>
                     <!-- https://developer.atlassian.com/docs/advanced-topics/configuration-of-instructions-in-atlassian-plugins -->
                     <instructions>
                         <Atlassian-Plugin-Key>${atlassian.plugin.key}</Atlassian-Plugin-Key>
@@ -312,6 +314,7 @@
                     <contextPath>/</contextPath>
                     <enableQuickReload>true</enableQuickReload>
                     <jvmArgs>-Xms2g -Xmx2g -XX:+UseG1GC</jvmArgs>
+                    <httpPort>${http.port}</httpPort>
                     <ajpPort>8010</ajpPort>
                     <!-- https://developer.atlassian.com/docs/advanced-topics/configuration-of-instructions-in-atlassian-plugins -->
                     <instructions>
@@ -361,6 +364,7 @@
                         <exclude>**/plugin.properties</exclude>
                         <exclude>**/log4j.properties</exclude>
                         <exclude>**/kaptKotlin/**/*</exclude>
+                        <exclude>**/*-min.js</exclude>
                     </excludes>
                     <excludedScopes>provided,test</excludedScopes>
                 </configuration>
@@ -373,6 +377,31 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+
+            <!-- INSTALL SELENIUM WEBDRIVER FOR TEST EXECUTION -->
+            <plugin>
+                <groupId>com.github.webdriverextensions</groupId>
+                <artifactId>webdriverextensions-maven-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>install-drivers</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <installationDirectory>${project.build.testOutputDirectory}/drivers</installationDirectory>
+                    <drivers>
+                        <driver>
+                            <name>geckodriver</name>
+                            <platform>linux</platform>
+                            <bit>64</bit>
+                            <version>0.24.0</version>
+                        </driver>
+                    </drivers>
+                </configuration>
             </plugin>
 
             <!-- INTEGRATION TEST -->
@@ -403,9 +432,9 @@
 
             <!-- UPM -->
             <plugin>
-                <groupId>com.link-time.maven.plugin.atlassian</groupId>
+                <groupId>com.linked-planet.maven</groupId>
                 <artifactId>upm-maven-plugin</artifactId>
-                <version>1.0.2</version>
+                <version>2.0.1</version>
                 <configuration>
                     <baseUrl>${deploy.url}</baseUrl>
                     <username>${deploy.username}</username>
@@ -450,7 +479,7 @@
                     <plugin>
                         <groupId>org.jetbrains.dokka</groupId>
                         <artifactId>dokka-maven-plugin</artifactId>
-                        <version>0.9.18</version>
+                        <version>1.4.32</version>
                         <executions>
                             <execution>
                                 <phase>prepare-package</phase>
@@ -479,6 +508,59 @@
                             </execution>
                         </executions>
                     </plugin>
+
+
+#if( $generateFrontend == "true" )
+                    <!-- BUILD FRONTEND -->
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>gradle</id>
+                                <phase>compile</phase>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <executable>frontend/gradlew</executable>
+                            <!-- no-daemon is actually necessary because somehow the Gradle daemon manages
+                                 to interfere with Confluence start-up. -->
+                            <commandlineArgs>clean build -Pci=true --no-daemon</commandlineArgs>
+                            <workingDirectory>${basedir}/frontend</workingDirectory>
+                        </configuration>
+                    </plugin>
+
+                    <!-- COPY FRONTEND INTO PLUGIN RESOURCES -->
+                    <plugin>
+                        <groupId>com.coderplus.maven.plugins</groupId>
+                        <artifactId>copy-rename-maven-plugin</artifactId>
+                        <version>1.0.1</version>
+                        <executions>
+                            <execution>
+                                <id>copy-file</id>
+                                <phase>prepare-package</phase>
+                                <goals>
+                                    <goal>copy</goal>
+                                </goals>
+                                <configuration>
+                                    <fileSets>
+                                        <fileSet>
+                                            <sourceFile>${basedir}/frontend/build/distributions/frontend.js</sourceFile>
+                                            <destinationFile>${project.build.outputDirectory}/js/frontend-min.js</destinationFile>
+                                        </fileSet>
+                                        <fileSet>
+                                            <sourceFile>${basedir}/frontend/build/distributions/frontend.js.map</sourceFile>
+                                            <destinationFile>${project.build.outputDirectory}/js/frontend-min.js.map</destinationFile>
+                                        </fileSet>
+                                    </fileSets>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+#end
                 </plugins>
             </build>
         </profile>
