@@ -143,6 +143,12 @@
             <version>4.2.1</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>3.4.0</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
 
@@ -376,6 +382,31 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+
+            <!-- INSTALL SELENIUM WEBDRIVER FOR TEST EXECUTION -->
+            <plugin>
+                <groupId>com.github.webdriverextensions</groupId>
+                <artifactId>webdriverextensions-maven-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>install-drivers</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <installationDirectory>${project.build.testOutputDirectory}/drivers</installationDirectory>
+                    <drivers>
+                        <driver>
+                            <name>geckodriver</name>
+                            <platform>linux</platform>
+                            <bit>64</bit>
+                            <version>0.24.0</version>
+                        </driver>
+                    </drivers>
+                </configuration>
             </plugin>
 
             <!-- INTEGRATION TEST -->
