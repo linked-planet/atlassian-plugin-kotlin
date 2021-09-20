@@ -22,7 +22,10 @@ jobs:
       - name: Download Maven Cache
         uses: actions/cache@v2
         with:
-          path: ~/.m2/repository
+          path: |
+            ~/.m2/repository
+            ~/.gradle/caches
+            ~/.gradle/wrapper
           key: ${{ runner.os }}-${{ steps.date.outputs.date }}-jira-maven
           restore-keys: |
             ${{ runner.os }}-${{ steps.date.outputs.date }}-jira-maven
