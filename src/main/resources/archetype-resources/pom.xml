@@ -370,6 +370,7 @@
                         <exclude>**/plugin.properties</exclude>
                         <exclude>**/log4j.properties</exclude>
                         <exclude>**/kaptKotlin/**/*</exclude>
+                        <exclude>**/*-min.js</exclude>
                     </excludes>
                     <excludedScopes>provided,test</excludedScopes>
                 </configuration>
@@ -531,9 +532,39 @@
                         </executions>
                         <configuration>
                             <executable>frontend/gradlew</executable>
+                            <!-- no-daemon is actually necessary because somehow the Gradle daemon manages
+                                 to interfere with Confluence start-up. -->
                             <commandlineArgs>clean build -Pci=true --no-daemon</commandlineArgs>
                             <workingDirectory>${basedir}/frontend</workingDirectory>
                         </configuration>
+                    </plugin>
+
+                    <!-- COPY FRONTEND INTO PLUGIN RESOURCES -->
+                    <plugin>
+                        <groupId>com.coderplus.maven.plugins</groupId>
+                        <artifactId>copy-rename-maven-plugin</artifactId>
+                        <version>1.0.1</version>
+                        <executions>
+                            <execution>
+                                <id>copy-file</id>
+                                <phase>prepare-package</phase>
+                                <goals>
+                                    <goal>copy</goal>
+                                </goals>
+                                <configuration>
+                                    <fileSets>
+                                        <fileSet>
+                                            <sourceFile>${basedir}/frontend/build/distributions/frontend.js</sourceFile>
+                                            <destinationFile>${project.build.outputDirectory}/js/frontend-min.js</destinationFile>
+                                        </fileSet>
+                                        <fileSet>
+                                            <sourceFile>${basedir}/frontend/build/distributions/frontend.js.map</sourceFile>
+                                            <destinationFile>${project.build.outputDirectory}/js/frontend-min.js.map</destinationFile>
+                                        </fileSet>
+                                    </fileSets>
+                                </configuration>
+                            </execution>
+                        </executions>
                     </plugin>
 #end
                 </plugins>
