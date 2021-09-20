@@ -17,6 +17,10 @@ echo_demarcation() {
   echo "--------------------------------------------------------------------------"
 }
 
-while read -r tag; do
-  install "$tag"
-done < <(git tag)
+LATEST_TAG=$(git describe --tags --abbrev=0)
+
+echo "Latest tag is: $LATEST_TAG"
+echo "Proceeding with 'git checkout $LATEST_TAG && mvn clean install'"
+read -r -p "Press any key to continue ..."
+
+install "$LATEST_TAG"

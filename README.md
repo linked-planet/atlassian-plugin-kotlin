@@ -11,7 +11,8 @@ Also provides the ability to create frontend modules using KotlinJS / React.
 
 ## Usage
 
-Use [install-all-tags.sh](install-all-tags.sh) to install all available tags on your local machine.
+Use [install-latest-tag.sh](install-latest-tag.sh) to install the latest available tag on your local machine.  
+Once done, you can create new plugin projects using the commands documented below.
 
 ### Required Properties
 
