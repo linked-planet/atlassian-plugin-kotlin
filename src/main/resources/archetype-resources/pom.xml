@@ -37,6 +37,7 @@
 #end
 
         <amps.version>8.2.0</amps.version>
+        <http.port>${httpPort}</http.port>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -265,6 +266,7 @@
                     <contextPath>/</contextPath>
                     <enableQuickReload>true</enableQuickReload>
                     <jvmArgs>-Xms2g -Xmx2g -XX:+UseG1GC</jvmArgs>
+                    <httpPort>${http.port}</httpPort>
                     <!-- https://developer.atlassian.com/docs/advanced-topics/configuration-of-instructions-in-atlassian-plugins -->
                     <instructions>
                         <Atlassian-Plugin-Key>${atlassian.plugin.key}</Atlassian-Plugin-Key>
@@ -312,6 +314,7 @@
                     <contextPath>/</contextPath>
                     <enableQuickReload>true</enableQuickReload>
                     <jvmArgs>-Xms2g -Xmx2g -XX:+UseG1GC</jvmArgs>
+                    <httpPort>${http.port}</httpPort>
                     <ajpPort>8010</ajpPort>
                     <!-- https://developer.atlassian.com/docs/advanced-topics/configuration-of-instructions-in-atlassian-plugins -->
                     <instructions>
