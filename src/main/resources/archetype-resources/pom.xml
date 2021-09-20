@@ -361,7 +361,6 @@
                         <exclude>**/plugin.properties</exclude>
                         <exclude>**/log4j.properties</exclude>
                         <exclude>**/kaptKotlin/**/*</exclude>
-                        <exclude>**/*-min.js</exclude>
                     </excludes>
                     <excludedScopes>provided,test</excludedScopes>
                 </configuration>
@@ -383,7 +382,7 @@
                 <version>2.21.0</version>
                 <configuration>
                     <includes>
-                        <include>it/**/*IntegrationTest*</include>
+                        <include>it/**/*IntegrationTest.java</include>
                     </includes>
                 </configuration>
             </plugin>
@@ -480,56 +479,6 @@
                             </execution>
                         </executions>
                     </plugin>
-
-#if( $generateFrontend == "true" )
-                    <!-- BUILD FRONTEND -->
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>exec-maven-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>gradle</id>
-                                <phase>compile</phase>
-                                <goals>
-                                    <goal>exec</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <executable>frontend/gradlew</executable>
-                            <commandlineArgs>clean build -Pci=true</commandlineArgs>
-                            <workingDirectory>${basedir}/frontend</workingDirectory>
-                        </configuration>
-                    </plugin>
-
-                    <!-- COPY FRONTEND INTO PLUGIN RESOURCES -->
-                    <plugin>
-                        <groupId>com.coderplus.maven.plugins</groupId>
-                        <artifactId>copy-rename-maven-plugin</artifactId>
-                        <version>1.0.1</version>
-                        <executions>
-                            <execution>
-                                <id>copy-file</id>
-                                <phase>prepare-package</phase>
-                                <goals>
-                                    <goal>copy</goal>
-                                </goals>
-                                <configuration>
-                                    <fileSets>
-                                        <fileSet>
-                                            <sourceFile>${basedir}/frontend/build/distributions/frontend.js</sourceFile>
-                                            <destinationFile>${project.build.outputDirectory}/js/frontend-min.js</destinationFile>
-                                        </fileSet>
-                                        <fileSet>
-                                            <sourceFile>${basedir}/frontend/build/distributions/frontend.js.map</sourceFile>
-                                            <destinationFile>${project.build.outputDirectory}/js/frontend-min.js.map</destinationFile>
-                                        </fileSet>
-                                    </fileSets>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-#end
                 </plugins>
             </build>
         </profile>
