@@ -27,13 +27,13 @@
         <atlassian.spring.scanner.version>2.2.1</atlassian.spring.scanner.version>
 
 #if( $atlassianApp == "jira" || $atlassianApp == "jira-insight" )
-        <jira.version>8.13.2</jira.version>
+        <jira.version>${atlassianAppVersion}</jira.version>
 #end
 #if( $atlassianApp == "jira-insight" )
         <insight.version>8.6.11</insight.version>
 #end
 #if( $atlassianApp == "confluence" )
-        <confluence.version>7.4.6</confluence.version>
+        <confluence.version>${atlassianAppVersion}</confluence.version>
 #end
 
         <amps.version>8.2.0</amps.version>

@@ -1,13 +1,16 @@
 # Maven Archetype: Kotlin Atlassian Plugin
 
-![Maven](https://github.com/linked-planet/atlassian-plugin-kotlin/workflows/Jira/badge.svg)
-![Maven](https://github.com/linked-planet/atlassian-plugin-kotlin/workflows/Confluence/badge.svg)
+![Maven](https://github.com/linked-planet/atlassian-plugin-kotlin/actions/workflows/jira.yml/badge.svg)
+![Maven](https://github.com/linked-planet/atlassian-plugin-kotlin/actions/workflows/confluence.yml/badge.svg)
 [![GitHub License](https://img.shields.io/badge/license-CC0%201.0%20Universal-blue.svg?style=flat)](https://creativecommons.org/publicdomain/zero/1.0/legalcode)
 
 Creates a Jira or Confluence plugin to be implemented with the
 [Kotlin](https://kotlinlang.org/) programming language.
 
-Also provides the ability to create frontend modules using KotlinJS / React.
+Also provides the ability to create SPA frontend modules using
+[KotlinJS](https://kotlinlang.org/docs/js-overview.html) / [React](https://reactjs.org/)
+via [JetBrains KotlinJS Wrappers](https://github.com/JetBrains/kotlin-wrappers),
+utilizing [Atlaskit UI Widgets](https://atlaskit.atlassian.com/).
 
 ## Usage
 
@@ -19,6 +22,7 @@ Once done, you can create new plugin projects using the commands documented belo
 | name | description |
 | ---- | ----------- |
 | atlassianApp | `confluence`, `jira`, `jira-insight` |
+| atlassianAppVersion | Version of Jira / Confluence to be used |
 | groupId | Maven Group ID |
 | artifactId | Maven Artifact ID |
 | package | Name of the Java package the plugin source code will reside in |
@@ -46,6 +50,7 @@ mvn archetype:generate -B \
     "-DarchetypeArtifactId=atlassian-plugin-kotlin" \
     "-DarchetypeVersion=<VERSION-OF-ARCHETYPE>" \
     "-DatlassianApp=jira" \
+    "-DatlassianAppVersion=8.13.11" \
     "-DgroupId=com.linked-planet.plugin.jira" \
     "-DartifactId=new-plugin" \
     "-Dpackage=com.linkedplanet.plugin.jira.newplugin" \
@@ -75,6 +80,7 @@ mvn archetype:generate -B \
     "-DarchetypeArtifactId=atlassian-plugin-kotlin" \
     "-DarchetypeVersion=<VERSION-OF-ARCHETYPE>" \
     "-DatlassianApp=confluence" \
+    "-DatlassianAppVersion=7.13.0" \
     "-DgroupId=com.linked-planet.plugin.confluence" \
     "-DartifactId=new-plugin" \
     "-Dpackage=com.linkedplanet.plugin.confluence.newplugin" \
@@ -95,6 +101,20 @@ mvn archetype:generate -B \
     "-DhttpPort=1990" \
     "-Dgoals=license:update-file-header"
 ```
+
+## Troubleshooting
+
+Note that we start actual Jira / Confluence instances during GitHub CI,
+also verifying that the React UI is integrated properly via a Selenium test.
+
+- First, make sure you are building your plugin with Java 8 JDK!
+  - Check your `JAVA_HOME` environment variable
+- Second, if you are having trouble building with the IDE, try via `mvn` command line instead 
+  - Note the `.mvn` folder in your generated plugin
+  - In case of IntelliJ, you must explicitly tell it to use that file as Maven settings file
+    (see [IDEA-197658](https://youtrack.jetbrains.com/issue/IDEA-197658))
+
+
 
 ## License
 
