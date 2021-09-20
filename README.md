@@ -19,6 +19,7 @@ Once done, you can create new plugin projects using the commands documented belo
 | name | description |
 | ---- | ----------- |
 | atlassianApp | `confluence`, `jira`, `jira-insight` |
+| atlassianAppVersion | Version of Jira / Confluence to be used |
 | groupId | Maven Group ID |
 | artifactId | Maven Artifact ID |
 | package | Name of the Java package the plugin source code will reside in |
@@ -46,6 +47,7 @@ mvn archetype:generate -B \
     "-DarchetypeArtifactId=atlassian-plugin-kotlin" \
     "-DarchetypeVersion=<VERSION-OF-ARCHETYPE>" \
     "-DatlassianApp=jira" \
+    "-DatlassianAppVersion=8.13.11" \
     "-DgroupId=com.linked-planet.plugin.jira" \
     "-DartifactId=new-plugin" \
     "-Dpackage=com.linkedplanet.plugin.jira.newplugin" \
@@ -75,6 +77,7 @@ mvn archetype:generate -B \
     "-DarchetypeArtifactId=atlassian-plugin-kotlin" \
     "-DarchetypeVersion=<VERSION-OF-ARCHETYPE>" \
     "-DatlassianApp=confluence" \
+    "-DatlassianAppVersion=7.13.0" \
     "-DgroupId=com.linked-planet.plugin.confluence" \
     "-DartifactId=new-plugin" \
     "-Dpackage=com.linkedplanet.plugin.confluence.newplugin" \

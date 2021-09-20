@@ -1,6 +1,6 @@
 # https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
 
-name: Jira
+name: Jira 8.13.X
 
 on:
   push:
@@ -36,6 +36,6 @@ jobs:
           java-version: 1.8
 
       - name: Build with Maven
-        run: mvn -B verify -Darchetype.test.projectsDirectory=target/test-classes/jira
+        run: mvn -B verify -Darchetype.test.projectsDirectory=target/test-classes/jira-8-13-X
         env:
           MOZ_HEADLESS: 1 # run firefox in headless mode for executing selenium tests
