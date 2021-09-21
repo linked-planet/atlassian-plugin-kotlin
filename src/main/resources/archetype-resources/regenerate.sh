@@ -34,6 +34,7 @@ mvn archetype:generate -B -U \
     "-DarchetypeArtifactId=atlassian-plugin-kotlin" \
     "-DarchetypeVersion=3.2.1-SNAPSHOT" \
     "-DatlassianApp=$atlassianApp" \
+    "-DatlassianAppVersion=$atlassianAppVersion" \
     "-DgroupId=$groupId" \
     "-DartifactId=$artifactId" \
     "-Dpackage=$package" \
@@ -48,6 +49,10 @@ mvn archetype:generate -B -U \
     "-DgenerateDockerEnvironment=false" \
     "-DgenerateStubs=false" \
     "-DgenerateFrontend=$generateFrontend" \
+    "-DfrontendAppName=$frontendAppName" \
+    "-DfrontendAppNameUpperCamelCase=$frontendAppNameUpperCamelCase" \
+    "-DfrontendAppNameKebabCase=$frontendAppNameKebabCase" \
+    "-DhttpPort=$httpPort" \
     "-Dgoals=license:update-file-header"
 
 
