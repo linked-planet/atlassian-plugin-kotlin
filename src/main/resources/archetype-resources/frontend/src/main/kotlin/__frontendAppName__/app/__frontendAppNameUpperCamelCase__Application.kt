@@ -1,7 +1,7 @@
 package ${frontendAppName}.app
 
-import ${frontendAppName}.page.exampleAppMainPage
-import ${frontendAppName}.reducer.ExampleAppHandler
+import ${frontendAppName}.page.${frontendAppName}MainPage
+import ${frontendAppName}.reducer.${frontendAppNameUpperCamelCase}Handler
 import imports.aui.auiSpinner
 import kotlinx.coroutines.delay
 import kotlinx.html.*
