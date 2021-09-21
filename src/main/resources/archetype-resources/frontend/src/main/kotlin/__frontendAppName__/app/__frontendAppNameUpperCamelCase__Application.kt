@@ -4,10 +4,8 @@ import ${frontendAppName}.page.${frontendAppName}MainPage
 import ${frontendAppName}.reducer.${frontendAppNameUpperCamelCase}Handler
 import imports.aui.auiSpinner
 import kotlinx.coroutines.delay
-import kotlinx.html.*
-import kotlinx.html.js.onClickFunction
+import kotlinx.html.id
 import model.Notification
-import org.w3c.dom.events.Event
 import react.*
 import react.dom.*
 import reducer.NotificationHandler
