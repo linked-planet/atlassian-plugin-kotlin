@@ -28,7 +28,6 @@
 
 #if( $atlassianApp == "jira" || $atlassianApp == "jira-insight" )
         <jira.version>${atlassianAppVersion}</jira.version>
-        <ao.version>3.2.11</ao.version>
 #end
 #if( $atlassianApp == "jira-insight" )
         <insight.version>9.0.7</insight.version>
@@ -109,12 +108,6 @@
             <groupId>javax.ws.rs</groupId>
             <artifactId>jsr311-api</artifactId>
             <version>1.1.1</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.atlassian.activeobjects</groupId>
-            <artifactId>activeobjects-plugin</artifactId>
-            <version>${ao.version}</version>
             <scope>provided</scope>
         </dependency>
 
