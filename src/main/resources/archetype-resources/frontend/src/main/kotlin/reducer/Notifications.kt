@@ -1,9 +1,9 @@
 package reducer
 
+import com.linkedplanet.uikit.util.BadStatusCodeException
 import ${frontendAppName}.app.${frontendAppNameUpperCamelCase}Application.Companion.appStore
 import model.*
 import redux.RAction
-import util.BadStatusCodeException
 
 // ACTIONS
 class AddNotification(val notification: Notification) : RAction

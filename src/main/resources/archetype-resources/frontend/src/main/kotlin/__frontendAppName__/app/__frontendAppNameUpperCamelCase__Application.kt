@@ -1,33 +1,46 @@
 package ${frontendAppName}.app
 
+import com.linkedplanet.uikit.util.Async
+import com.linkedplanet.uikit.wrapper.aui.auiSpinner
 import ${frontendAppName}.page.${frontendAppName}MainPage
 import ${frontendAppName}.reducer.${frontendAppNameUpperCamelCase}Handler
-import imports.aui.auiSpinner
 import kotlinx.coroutines.delay
 import kotlinx.html.id
 import model.Notification
 import react.*
 import react.dom.*
+import react.redux.*
 import reducer.NotificationHandler
 import redux.*
-import util.Async
-import util.ReduxUtil.connect
 
 
-interface ${frontendAppNameUpperCamelCase}ApplicationStateProps : RProps {
+external interface ${frontendAppNameUpperCamelCase}ApplicationStateProps : Props {
     var screen: ${frontendAppNameUpperCamelCase}Application.Screen
     var notifications: List<Notification>
 }
 
+external interface ${frontendAppNameUpperCamelCase}ApplicationDispatchProps : Props
+
+external interface ${frontendAppNameUpperCamelCase}ApplicationProps : ${frontendAppNameUpperCamelCase}ApplicationStateProps, ${frontendAppNameUpperCamelCase}ApplicationDispatchProps
+
 val ${frontendAppName}Application =
-    connect<${frontendAppNameUpperCamelCase}AppState, ${frontendAppNameUpperCamelCase}ApplicationStateProps>(${frontendAppNameUpperCamelCase}Application::class)
-    { state, _ ->
-        screen = state.screen
-        notifications = state.notifications
-    }
+    rConnect<
+        ${frontendAppNameUpperCamelCase}AppState,
+        RAction,
+        WrapperAction,
+        Props,
+        ${frontendAppNameUpperCamelCase}ApplicationStateProps,
+        ${frontendAppNameUpperCamelCase}ApplicationDispatchProps,
+        ${frontendAppNameUpperCamelCase}ApplicationProps>(
+        { state, _ ->
+            screen = state.screen
+            notifications = state.notifications
+        },
+        { _, _ -> }
+        )(${frontendAppNameUpperCamelCase}Application::class.react)
 
 class ${frontendAppNameUpperCamelCase}Application(props: ${frontendAppNameUpperCamelCase}ApplicationStateProps) :
-    RComponent<${frontendAppNameUpperCamelCase}ApplicationStateProps, RState>(props) {
+    RComponent<${frontendAppNameUpperCamelCase}ApplicationStateProps, State>(props) {
 
     override fun componentDidMount() {
         // load initial data and switch to main screen once loaded

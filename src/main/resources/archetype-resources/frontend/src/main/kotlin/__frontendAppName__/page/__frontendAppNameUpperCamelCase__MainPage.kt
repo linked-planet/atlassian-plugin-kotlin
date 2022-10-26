@@ -4,8 +4,7 @@ import react.*
 import react.dom.*
 
 
-class ${frontendAppNameUpperCamelCase}MainPage :
-    RComponent<${frontendAppNameUpperCamelCase}MainPage.Props, ${frontendAppNameUpperCamelCase}MainPage.State>() {
+class ${frontendAppNameUpperCamelCase}MainPage : RComponent<Props, State>() {
 
     override fun RBuilder.render() {
         // TODO the main part of your frontend goes here
@@ -15,12 +14,6 @@ class ${frontendAppNameUpperCamelCase}MainPage :
                 +"https://www.linked-planet.com"
             }
         }
-    }
-
-    interface Props : RProps {
-    }
-
-    interface State : RState {
     }
 
 }
