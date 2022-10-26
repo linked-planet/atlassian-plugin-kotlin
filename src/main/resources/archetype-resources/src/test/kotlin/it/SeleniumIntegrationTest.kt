@@ -1,11 +1,11 @@
 package it
 
 import org.junit.*
-import org.junit.Assert.*
+import org.junit.Assert.assertTrue
 import org.openqa.selenium.*
 import org.openqa.selenium.firefox.FirefoxDriver
-import org.openqa.selenium.remote.DesiredCapabilities
 import org.openqa.selenium.support.ui.*
+import java.time.Duration
 import java.util.concurrent.TimeUnit
 
 class SeleniumIntegrationTest {
@@ -36,12 +36,12 @@ class SeleniumIntegrationTest {
         val loadingSpinnerSelector = By.className("util-align-loading-spinner")
         val loadingSpinner = mainComponent.findElement(loadingSpinnerSelector)
         assertTrue(loadingSpinner.isDisplayed)
-        WebDriverWait(driver, 5).until(
+        WebDriverWait(driver, Duration.ofSeconds(5)).until(
             ExpectedConditions.numberOfElementsToBe(loadingSpinnerSelector, 0)
         )
 
         // after loading spinner disappears, we see the actual main component content
-        WebDriverWait(driver, 5).until(
+        WebDriverWait(driver, Duration.ofSeconds(5)).until(
             ExpectedConditions.textToBePresentInElement(
                 mainComponent.findElement(By.tagName("div")),
                 "Visit us"
@@ -63,8 +63,7 @@ class SeleniumIntegrationTest {
         @JvmStatic
         fun configureSelenium() {
             System.setProperty("webdriver.gecko.driver", "target/test-classes/drivers/geckodriver-linux-64bit")
-            val capabilities = DesiredCapabilities.firefox()
-            driver = FirefoxDriver(capabilities)
+            driver = FirefoxDriver()
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS)
         }
 
