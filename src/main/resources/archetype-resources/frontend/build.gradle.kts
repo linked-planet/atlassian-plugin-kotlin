@@ -1,43 +1,17 @@
-import org.gradle.util.GradleVersion
 import org.jetbrains.kotlin.gradle.targets.js.nodejs.*
 
 println("Gradle Version: " + GradleVersion.current().toString())
 println("Java Version: " + JavaVersion.current().toString())
+
 val ciProfile = if (ext.has("ci")) (ext.get("ci") as String).toBoolean() else false
-val kotlinVersion = "1.4.32"
+val kotlinVersion = "1.7.20"
 
 group = "${groupId}"
 version = "0.1.0-SNAPSHOT"
 
 plugins {
-    kotlin("js") version "1.4.32"
-}
-
-kotlin {
-    js {
-        useCommonJs()
-        browser {
-            compilations.all {
-                compileKotlinTask.kotlinOptions.freeCompilerArgs += listOf("-Xopt-in=kotlin.RequiresOptIn")
-            }
-            runTask {
-                devServer = devServer?.copy(
-                    // frontend is embedded, so no point in opening a separate browser window
-                    open = false
-                )
-            }
-            webpackTask {
-                outputFileName = "${project.name}.js"
-            }
-            dceTask {
-                // list exported, unused functions to protect from dead-code-elimination
-                keep(
-                    "frontend.start${frontendAppNameUpperCamelCase}", "frontend.stop${frontendAppNameUpperCamelCase}"
-                )
-            }
-        }
-        binaries.executable()
-    }
+    kotlin("js") version "1.7.20"
+    kotlin("plugin.serialization") version "1.7.20"
 }
 
 val kotlinWrapperVersion = "pre.154-kotlin-$kotlinVersion"
@@ -98,6 +72,36 @@ dependencies {
     implementation(devNpm("file-loader", "6.2.0"))
     implementation(devNpm("@babel/core", "7.12.9"))
 }
+
+kotlin {
+    sourceSets.all {
+        languageSettings.optIn("kotlin.RequiresOptIn")
+    }
+    js {
+        useCommonJs()
+        browser {
+            runTask {
+                devServer = devServer?.copy(
+                    // frontend is embedded, so no point in opening a separate browser window
+                    open = false
+                )
+            }
+            webpackTask {
+                outputFileName = "${project.name}.js"
+            }
+            @OptIn(org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalDceDsl::class)
+            dceTask {
+                // list exported, unused functions to protect from dead-code-elimination
+                keep(
+                    "frontend.start${frontendAppNameUpperCamelCase}", "frontend.stop${frontendAppNameUpperCamelCase}"
+                )
+            }
+        }
+        binaries.executable()
+    }
+}
+
+
 
 // without this, node will fail to execute in the Bitbucket Pipeline Build Container
 if (ciProfile) {
