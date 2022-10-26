@@ -437,7 +437,7 @@
                             <name>geckodriver</name>
                             <platform>linux</platform>
                             <bit>64</bit>
-                            <version>0.32.0</version>
+                            <version>0.31.0</version>
                         </driver>
                     </drivers>
                 </configuration>
