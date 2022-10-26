@@ -1,5 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="jira:run" type="MavenRunConfiguration" factoryName="Maven">
+    <log_file alias="atlassian-jira.log" path="$PROJECT_DIR$/target/jira/home/log/atlassian-jira.log" />
     <MavenSettings>
       <option name="myGeneralSettings" />
       <option name="myRunnerSettings" />
