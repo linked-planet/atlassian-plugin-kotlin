@@ -14,10 +14,6 @@ plugins {
     kotlin("plugin.serialization") version "1.7.20"
 }
 
-val kotlinWrapperVersion = "pre.154-kotlin-$kotlinVersion"
-val reduxVersion = "4.0.5"
-val reactVersion = "17.0.2"
-val reactReduxVersion = "7.2.3"
 dependencies {
     implementation(kotlin("stdlib-js", kotlinVersion))
     implementation("com.linked-planet.ui", "ui-kit-lib", "0.10.0")
@@ -45,7 +41,8 @@ kotlin {
             dceTask {
                 // list exported, unused functions to protect from dead-code-elimination
                 keep(
-                    "frontend.start${frontendAppNameUpperCamelCase}", "frontend.stop${frontendAppNameUpperCamelCase}"
+                    "frontend.start${frontendAppNameUpperCamelCase}",
+                    "frontend.stop${frontendAppNameUpperCamelCase}"
                 )
             }
         }
@@ -64,5 +61,4 @@ if (ciProfile) {
 
 repositories {
     mavenCentral()
-    maven { url = uri("https://maven.pkg.jetbrains.space/kotlin/p/kotlin/kotlin-js-wrappers") }
 }
