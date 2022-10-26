@@ -110,10 +110,6 @@ also verifying that the React UI is integrated properly via a Selenium test.
 - First, make sure you are building your plugin with Java 8 JDK!
   - Check your `JAVA_HOME` environment variable
 - Second, if you are having trouble building with the IDE, try via `mvn` command line instead 
-  - Note the `.mvn` folder in your generated plugin
-  - In case of IntelliJ, you must explicitly tell it to use that file as Maven settings file
-    (see [IDEA-197658](https://youtrack.jetbrains.com/issue/IDEA-197658))
-
 
 
 ## License
