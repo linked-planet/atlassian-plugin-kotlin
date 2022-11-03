@@ -15,7 +15,6 @@ void deleteRecursive(Path path) throws IOException {
 }
 
 String atlassianApp = request.properties.get("atlassianApp")
-Boolean generateBitbucketPipelines = Boolean.valueOf(request.properties.get("generateBitbucketPipelines"))
 Boolean generateDockerEnvironment = Boolean.valueOf(request.properties.get("generateDockerEnvironment"))
 Boolean generateGithubActions = Boolean.valueOf(request.properties.get("generateGithubActions"))
 Boolean generateStubs = Boolean.valueOf(request.properties.get("generateStubs"))
@@ -37,11 +36,6 @@ if (atlassianApp.contains("jira")) {
 
 if (!generateGithubActions) {
     deleteRecursive projectPath.resolve(".github")
-}
-
-if (!generateBitbucketPipelines) {
-    deleteRecursive projectPath.resolve("pipelines")
-    Files.deleteIfExists projectPath.resolve("bitbucket-pipelines.yml")
 }
 
 if (!generateDockerEnvironment) {

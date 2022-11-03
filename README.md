@@ -33,7 +33,6 @@ Once done, you can create new plugin projects using the commands documented belo
 | inceptionYear | Year of inception |
 | developerConnection | String to be written into Maven's SCM `developerConnection` tag |
 | generateGithubActions | Whether to generate a GitHub workflow |
-| generateBitbucketPipelines | Whether to generate bitbucket-pipelines.yml and corresponding scripts |
 | generateDockerEnvironment | Whether to generate a `docker-compose.yml` with a basic Atlassian-provided app container |
 | generateStubs | Whether to generate stubs (all archetype files in `src`) |
 | generateFrontend | Whether to generate a separate React/KotlinJS frontend  |
@@ -61,7 +60,6 @@ mvn archetype:generate -B \
     "-DinceptionYear=2021" \
     "-DdeveloperConnection=scm:git:https://github.com/linked-planet/new-plugin.git" \
     "-DgenerateGithubActions=true" \
-    "-DgenerateBitbucketPipelines=true" \
     "-DgenerateDockerEnvironment=true" \
     "-DgenerateStubs=true" \
     "-DgenerateFrontend=true" \
@@ -91,7 +89,6 @@ mvn archetype:generate -B \
     "-DinceptionYear=2021" \
     "-DdeveloperConnection=scm:git:https://github.com/linked-planet/new-plugin.git" \
     "-DgenerateGithubActions=true" \
-    "-DgenerateBitbucketPipelines=true" \
     "-DgenerateDockerEnvironment=true" \
     "-DgenerateStubs=true" \
     "-DgenerateFrontend=true" \

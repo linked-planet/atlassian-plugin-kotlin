@@ -45,7 +45,6 @@ mvn archetype:generate -B -U \
     "-DinceptionYear=$inceptionYear" \
     "-DdeveloperConnection=$developerConnection" \
     "-DgenerateGithubActions=$generateGithubActions" \
-    "-DgenerateBitbucketPipelines=$generateBitbucketPipelines" \
     "-DgenerateDockerEnvironment=false" \
     "-DgenerateStubs=false" \
     "-DgenerateFrontend=$generateFrontend" \

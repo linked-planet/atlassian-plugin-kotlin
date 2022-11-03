@@ -8,6 +8,9 @@
             <directory>.mvn</directory>
         </fileSet>
         <fileSet filtered="true" encoding="UTF-8">
+            <directory>.github</directory>
+        </fileSet>
+        <fileSet filtered="true" encoding="UTF-8">
             <directory>frontend/src/main/kotlin</directory>
         </fileSet>
         <fileSet filtered="true" encoding="UTF-8">
@@ -48,9 +51,6 @@
             <directory>runConfigurations</directory>
         </fileSet>
         <fileSet filtered="true" encoding="UTF-8">
-            <directory>pipelines</directory>
-        </fileSet>
-        <fileSet filtered="true" encoding="UTF-8">
             <!--suppress CheckTagEmptyBody - it's the only way to get the files in the root directory -->
             <directory></directory>
             <includes>
@@ -80,9 +80,6 @@
             <defaultValue>0.1.0-SNAPSHOT</defaultValue>
         </requiredProperty>
         <requiredProperty key="generateGithubActions">
-            <defaultValue>true</defaultValue>
-        </requiredProperty>
-        <requiredProperty key="generateBitbucketPipelines">
             <defaultValue>true</defaultValue>
         </requiredProperty>
         <requiredProperty key="generateDockerEnvironment">
