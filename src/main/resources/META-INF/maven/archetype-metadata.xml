@@ -55,11 +55,9 @@
             <directory></directory>
             <includes>
                 <include>.gitignore</include>
-                <include>bitbucket-pipelines.yml</include>
                 <include>LICENSE</include>
                 <include>regenerate.sh</include>
                 <include>run-docker-env.sh</include>
-                <include>setup-idea.sh</include>
             </includes>
         </fileSet>
     </fileSets>
