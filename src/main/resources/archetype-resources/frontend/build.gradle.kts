@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.targets.js.nodejs.*
-
 println("Gradle Version: " + GradleVersion.current().toString())
 println("Java Version: " + JavaVersion.current().toString())
 
@@ -47,15 +45,6 @@ kotlin {
             }
         }
         binaries.executable()
-    }
-}
-
-
-
-// without this, node will fail to execute in the Bitbucket Pipeline Build Container
-if (ciProfile) {
-    rootProject.plugins.withType(NodeJsRootPlugin::class.java) {
-        rootProject.the<NodeJsRootExtension>().download = false
     }
 }
 
