@@ -9,7 +9,7 @@
     <version>3.2.1-SNAPSHOT</version>
     <packaging>maven-archetype</packaging>
 
-    <name>Atlassian Plugin Archetype - Kotlin</name>
+    <name>Maven Archetype: Atlassian Plugin Kotlin</name>
     <description>Creates a Jira or Confluence plugin to be implemented with the Kotlin programming language.</description>
     <inceptionYear>2018</inceptionYear>
 

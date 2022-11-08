@@ -1,4 +1,4 @@
-# Maven Archetype: Kotlin Atlassian Plugin
+# Maven Archetype: Atlassian Plugin Kotlin
 
 ![Maven](https://github.com/linked-planet/atlassian-plugin-kotlin/actions/workflows/jira.yml/badge.svg)
 ![Maven](https://github.com/linked-planet/atlassian-plugin-kotlin/actions/workflows/confluence.yml/badge.svg)
