@@ -408,6 +408,11 @@
                     <projectName>${project.artifactId}</projectName>
                     <copyrightOwners>The Plugin Authors</copyrightOwners>
                     <failOnMissingHeader>true</failOnMissingHeader>
+                    <failOnNotUptodateHeader>true</failOnNotUptodateHeader>
+                    <roots>
+                        <root>src</root>
+                        <root>frontend/src/main</root>
+                    </roots>
                     <excludes>
                         <exclude>**/plugin.properties</exclude>
                         <exclude>**/log4j.properties</exclude>
