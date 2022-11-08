@@ -1,5 +1,24 @@
 # Change Log
 
+## 3.3.0 - 2022-11-08
+
+### Changed
+
+- Upgrade Jira and Confluence versions
+  - Jira 8.20.13 
+  - Confluence 7.13.8
+- Upgrade versions of all dependencies, Maven plugins & Gradle plugins
+- Upgrade Kotlin version to 1.7.20
+- Maven license plugin now also processed frontend code
+- Update license notice for 2022
+- Add atlassian-jira.log to IntelliJ run configurations
+- React Frontend: Use [ui-kit-lib](https://github.com/linked-planet/ui-kit)
+- React Frontend: Removed obsolete Gradle build workarounds
+- Removed obsolete code
+- Removed publishing to Artifactory (recommend to use e.g. AWS CodeArtifact instead)
+- Removed developerConnection & scm settings from Maven build (no longer used)
+- Dropped support for Bitbucket Pipelines (recommend to use GitHub Actions instead)
+
 ## 3.2.0 - 2021-09-20
 
 ### Added
