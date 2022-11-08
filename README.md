@@ -113,7 +113,7 @@ also verifying that the React UI is integrated properly via a Selenium test.
 
 ### Template license
 
-Written 2019-2021 by [linked-planet GmbH](https://www.linked-planet.com).
+Written 2019-2022 by [linked-planet GmbH](https://www.linked-planet.com).
 
 To the extent possible under law, the author(s) have dedicated all copyright and related and neighboring rights to this
 template to the public domain worldwide. This template is distributed without any warranty.
