@@ -9,7 +9,7 @@
   - Confluence 7.13.8
 - Upgrade versions of all dependencies, Maven plugins & Gradle plugins
 - Upgrade Kotlin version to 1.7.20
-- Maven license plugin now also processed frontend code
+- Maven license plugin now also processing frontend code
 - Update license notice for 2022
 - Add atlassian-jira.log to IntelliJ run configurations
 - React Frontend: Use [ui-kit-lib](https://github.com/linked-planet/ui-kit)
