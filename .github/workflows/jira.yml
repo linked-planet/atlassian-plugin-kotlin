@@ -37,6 +37,6 @@ jobs:
           distribution: 'adopt'
 
       - name: Build with Maven
-        run: mvn -B verify -Darchetype.test.projectsDirectory=target/test-classes/jira-8-17-X
+        run: mvn -B verify -Darchetype.test.projectsDirectory=target/test-classes/jira-8-20-X
         env:
           MOZ_HEADLESS: 1 # run firefox in headless mode for executing selenium tests
