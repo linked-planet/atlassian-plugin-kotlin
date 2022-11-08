@@ -31,7 +31,6 @@ Once done, you can create new plugin projects using the commands documented belo
 | organizationNameHumanReadable | Name of the author organization |
 | organizationUrl | URL of the author organization |
 | inceptionYear | Year of inception |
-| developerConnection | String to be written into Maven's SCM `developerConnection` tag |
 | generateGithubActions | Whether to generate a GitHub workflow |
 | generateDockerEnvironment | Whether to generate a `docker-compose.yml` with a basic Atlassian-provided app container |
 | generateStubs | Whether to generate stubs (all archetype files in `src`) |
@@ -57,8 +56,7 @@ mvn archetype:generate -B \
     "-Ddescription=Description of New Plugin" \
     "-DorganizationNameHumanReadable=linked-planet GmbH" \
     "-DorganizationUrl=https://linked-planet.com" \
-    "-DinceptionYear=2021" \
-    "-DdeveloperConnection=scm:git:https://github.com/linked-planet/new-plugin.git" \
+    "-DinceptionYear=2022" \
     "-DgenerateGithubActions=true" \
     "-DgenerateDockerEnvironment=true" \
     "-DgenerateStubs=true" \
@@ -86,8 +84,7 @@ mvn archetype:generate -B \
     "-Ddescription=Description of New Plugin" \
     "-DorganizationNameHumanReadable=linked-planet GmbH" \
     "-DorganizationUrl=https://linked-planet.com" \
-    "-DinceptionYear=2021" \
-    "-DdeveloperConnection=scm:git:https://github.com/linked-planet/new-plugin.git" \
+    "-DinceptionYear=2022" \
     "-DgenerateGithubActions=true" \
     "-DgenerateDockerEnvironment=true" \
     "-DgenerateStubs=true" \

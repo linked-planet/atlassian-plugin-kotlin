@@ -43,7 +43,6 @@ mvn archetype:generate -B -U \
     "-DorganizationNameHumanReadable=$organizationNameHumanReadable" \
     "-DorganizationUrl=$organizationUrl" \
     "-DinceptionYear=$inceptionYear" \
-    "-DdeveloperConnection=$developerConnection" \
     "-DgenerateGithubActions=$generateGithubActions" \
     "-DgenerateDockerEnvironment=false" \
     "-DgenerateStubs=false" \

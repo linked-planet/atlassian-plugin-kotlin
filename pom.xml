@@ -25,13 +25,6 @@
         </license>
     </licenses>
 
-    <scm>
-        <connection>scm:git:git://github.com/linked-planet/atlassian-plugin-kotlin.git</connection>
-        <developerConnection>scm:git:https://github.com/linked-planet/atlassian-plugin-kotlin.git</developerConnection>
-        <url>https://github.com/linked-planet/atlassian-plugin-kotlin</url>
-        <tag>HEAD</tag>
-    </scm>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>

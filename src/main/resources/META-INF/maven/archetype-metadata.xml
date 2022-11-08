@@ -67,7 +67,6 @@
         <requiredProperty key="description"/>
         <requiredProperty key="atlassianApp"/>
         <requiredProperty key="atlassianAppVersion"/>
-        <requiredProperty key="developerConnection"/>
         <requiredProperty key="groupId"/>
         <requiredProperty key="artifactId"/>
         <requiredProperty key="package"/>
