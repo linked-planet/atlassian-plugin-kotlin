@@ -1,6 +1,6 @@
 # https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
 
-name: Jira 8.17.X
+name: Jira 8.20.X
 
 on:
   push:
