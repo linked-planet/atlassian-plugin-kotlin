@@ -48,7 +48,7 @@ mvn archetype:generate -B \
     "-DarchetypeArtifactId=atlassian-plugin-kotlin" \
     "-DarchetypeVersion=<VERSION-OF-ARCHETYPE>" \
     "-DatlassianApp=jira" \
-    "-DatlassianAppVersion=8.13.11" \
+    "-DatlassianAppVersion=8.20.13" \
     "-DgroupId=com.linked-planet.plugin.jira" \
     "-DartifactId=new-plugin" \
     "-Dpackage=com.linkedplanet.plugin.jira.newplugin" \
@@ -76,7 +76,7 @@ mvn archetype:generate -B \
     "-DarchetypeArtifactId=atlassian-plugin-kotlin" \
     "-DarchetypeVersion=<VERSION-OF-ARCHETYPE>" \
     "-DatlassianApp=confluence" \
-    "-DatlassianAppVersion=7.13.0" \
+    "-DatlassianAppVersion=7.13.8" \
     "-DgroupId=com.linked-planet.plugin.confluence" \
     "-DartifactId=new-plugin" \
     "-Dpackage=com.linkedplanet.plugin.confluence.newplugin" \
