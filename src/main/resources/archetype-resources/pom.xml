@@ -414,6 +414,8 @@
                         <exclude>**/log4j.properties</exclude>
                         <exclude>**/kaptKotlin/**/*</exclude>
                         <exclude>**/*-min.js</exclude>
+                        <!-- license-plugin cannot deal with this code -->
+                        <exclude>**/*Application.kt</exclude>
                     </excludes>
                     <excludedScopes>provided,test</excludedScopes>
                 </configuration>
