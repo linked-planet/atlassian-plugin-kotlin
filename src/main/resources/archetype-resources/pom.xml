@@ -171,9 +171,14 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <!-- Beware of java.lang.NoSuchMethodError: 'com.google.common.collect.ImmutableMap.of'
-                 when upgrading selenium-java beyond 4.1.1 -->
-            <version>4.1.1</version>
+            <version>4.6.0</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- without forcing a recent version of Guava, selenium-java will fail during test execution -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>31.1-jre</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
