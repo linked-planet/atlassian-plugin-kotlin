@@ -359,7 +359,7 @@
                     <productVersion>${confluence.version}</productVersion>
                     <contextPath>/</contextPath>
                     <enableQuickReload>true</enableQuickReload>
-                    <jvmArgs>-Xms2g -Xmx2g -XX:+UseG1GC</jvmArgs>
+                    <jvmArgs>-Xms2g -Xmx2g -XX:+UseG1GC -XX:+ExplicitGCInvokesConcurrent</jvmArgs>
                     <httpPort>${http.port}</httpPort>
                     <ajpPort>8010</ajpPort>
                     <!-- https://developer.atlassian.com/docs/advanced-topics/configuration-of-instructions-in-atlassian-plugins -->
@@ -369,7 +369,9 @@
                             ${package}.api,
                         </Export-Package>
                         <Import-Package>
-                            *
+                            org.springframework.osgi.*;resolution:="optional",
+                            org.eclipse.gemini.blueprint.*;resolution:="optional",
+                            *;version="0";resolution:=optional
                         </Import-Package>
                         <Spring-Context>*</Spring-Context>
                     </instructions>
